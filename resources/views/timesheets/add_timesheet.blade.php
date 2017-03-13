@@ -408,9 +408,9 @@ $(document).ajaxStop(function(){
 
         function onChangeLocation(obj, id) {
             //alert(obj.value);
-            if (obj.value === 'DOMESTIK P. JAWA') {
+            if (obj.value === 'JAWA') {
                 $('#insentiv' + id + 'value').val({{ $bantuan_perumahan['non_lokal'] }})
-            } else if (obj.value === 'DOMESTIK L. JAWA') {
+            } else if (obj.value === 'LUARJAWA') {
                 $('#insentiv' + id + 'value').val({{ $bantuan_perumahan['luar_jawa'] }})
             }
             else if (obj.value === 'INTERNATIONAL') {

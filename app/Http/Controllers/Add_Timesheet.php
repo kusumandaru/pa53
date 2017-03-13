@@ -40,7 +40,7 @@ class Add_Timesheet extends Controller
        ->where('user_id','=',Auth::user()->id)
        ->whereRaw('projects.deleted_at is null')
        ->pluck('projects.project_name', 'project_id')->all();
-        $nonlokal = array('DOMESTIK P. JAWA' => 'DOMESTIK P. JAWA', 'DOMESTIK L. JAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
+        $nonlokal = array('JAWA' => 'DOMESTIK P. JAWA', 'LUARJAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
         $bantuan_perumahan = $this->getTunjanganPerumahan();
         return view('timesheets.add_timesheet', compact('project', 'nonlokal', 'bantuan_perumahan'));
     }
@@ -103,7 +103,7 @@ class Add_Timesheet extends Controller
         foreach ($timesheet_transport as $g) {
             $sum_timesheet_transport += $g->value;
         }
-        $nonlokal = array('DOMESTIK P. JAWA' => 'DOMESTIK P. JAWA', 'DOMESTIK L. JAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
+        $nonlokal = array('JAWA' => 'DOMESTIK P. JAWA', 'LUARJAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
         $bantuan_perumahan = $this->getTunjanganPerumahan();
         //return response()->json($timesheet_transport);
         $summary = $this->populateSummary($id);
@@ -133,7 +133,7 @@ class Add_Timesheet extends Controller
                     }
                 }
 
-            } else if ($m->lokasi === "DOMESTIK L. JAWA") {
+            } else if ($m->lokasi === "LUARJAWA") {
                 $summary['luar_jawa']['count'] = $m->total;
                 if (!empty ($arr)) {
                     foreach ($arr['luar_jawa'] as $key => $value) {
@@ -141,7 +141,7 @@ class Add_Timesheet extends Controller
                         //  echo $key. ' = '.$value. ' * '.$m->total.' '.$value*$m->total.'<br>';
                     }
                 }
-            } else if ($m->lokasi === "DOMESTIK P. JAWA") {
+            } else if ($m->lokasi === "JAWA") {
                 $summary['non_lokal']['count'] = $m->total;
                 if (!empty ($arr)) {
                     foreach ($arr['non_lokal'] as $key => $value) {
@@ -233,7 +233,7 @@ class Add_Timesheet extends Controller
        ->where('user_id','=',Auth::user()->id)
        ->whereRaw('projects.deleted_at is null')
        ->pluck('projects.project_name', 'project_id')->all();
-        $nonlokal = array('DOMESTIK P. JAWA' => 'DOMESTIK P. JAWA', 'DOMESTIK L. JAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
+        $nonlokal = array('JAWA' => 'DOMESTIK P. JAWA', 'LUARJAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
         $bantuan_perumahan = $this->getTunjanganPerumahan();
         return view('timesheets.add_timesheet', compact('project', 'lokasi', 'activity', 'nonlokal', 'bantuan_perumahan'));
     }

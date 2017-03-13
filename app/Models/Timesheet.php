@@ -266,7 +266,7 @@ class Timesheet extends Model
                     }
                 }
 
-            } else if ($m->lokasi === "DOMESTIK L. JAWA") {
+            } else if ($m->lokasi === "LUARJAWA") {
                 if (!empty ($arr)) {
                     if ($arr['luar_jawa'] != null) {
                         foreach ($arr['luar_jawa'] as $key => $value) {
@@ -274,7 +274,7 @@ class Timesheet extends Model
                         }
                     }
                 }
-            } else if ($m->lokasi === "DOMESTIK P. JAWA") {
+            } else if ($m->lokasi === "JAWA") {
                 if (!empty ($arr)) {
                     if ($arr['non_lokal'] != null) {
                         foreach ($arr['non_lokal'] as $key => $value) {
@@ -334,7 +334,7 @@ class Timesheet extends Model
                     }
                 }
 
-            } else if ($m->lokasi === "DOMESTIK L. JAWA") {
+            } else if ($m->lokasi === "LUARJAWA") {
                 if (!empty ($arr)) {
                     if ($arr['luar_jawa'] != null) {
                         foreach ($arr['luar_jawa'] as $key => $value) {
@@ -342,7 +342,7 @@ class Timesheet extends Model
                         }
                     }
                 }
-            } else if ($m->lokasi === "DOMESTIK P. JAWA") {
+            } else if ($m->lokasi === "JAWA") {
                 if (!empty ($arr)) {
                     if ($arr['non_lokal'] != null) {
                         foreach ($arr['non_lokal'] as $key => $value) {
@@ -648,7 +648,7 @@ class Timesheet extends Model
                     }
                 }
 
-            } else if ($m->lokasi === "DOMESTIK L. JAWA") {
+            } else if ($m->lokasi === "LUARJAWA") {
                 if (!empty ($arr)) {
                     if ($arr['luar_jawa'] != null) {
                         foreach ($arr['luar_jawa'] as $key => $value) {

@@ -18,93 +18,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['middleware' => ['App\Http\Middleware\AdminMiddleware']], function()
-{
-    Route::resource('departments', 'DepartmentController');
-
-    Route::post('holidaysimport', array('uses' => 'HolidayController@processSheet',
-        'as' => 'holidaysimport'));
-
-    Route::resource('holidays', 'HolidayController');
-
-    Route::resource('projects', 'ProjectController');
-
-    Route::resource('projectMembers', 'ProjectMemberController');
-
-    Route::resource('roles', 'RoleController');
-
-    Route::resource('sequences', 'SequenceController');
-
-    Route::resource('timesheetDetails', 'TimesheetDetailController');
-
-    Route::resource('tunjangans', 'TunjanganController');
-
-    Route::resource('tunjanganProjects', 'TunjanganProjectController');
-
-    Route::resource('tunjanganPositions', 'TunjanganPositionController');
-
-    Route::resource('positions', 'PositionController');
-
-    Route::resource('audits', 'AuditController');
-
-    Route::resource('accessModules', 'AccessModuleController');
-
-    Route::resource('roleAccesses', 'RoleAccessController');
-
-    Route::resource('constants', 'ConstantController');
-
-    Route::resource('userLeaves', 'UserLeaveController');
-
-    Route::resource('timesheetTransports', 'TimesheetTransportController');
-
-    Route::resource('timesheetInsentifs', 'TimesheetInsentifController');
-});
-
-Route::group(['middleware' => ['App\Http\Middleware\PMOMiddleware']], function()
-{
-    Route::resource('departments', 'DepartmentController');
-
-    Route::post('holidaysimport', array('uses' => 'HolidayController@processSheet',
-        'as' => 'holidaysimport'));
-
-    Route::resource('holidays', 'HolidayController');
-
-
-    Route::resource('projects', 'ProjectController');
-
-    Route::resource('projectMembers', 'ProjectMemberController');
-
-    Route::resource('roles', 'RoleController');
-
-    Route::resource('sequences', 'SequenceController');
-
-    Route::resource('timesheetDetails', 'TimesheetDetailController');
-
-    Route::resource('tunjangans', 'TunjanganController');
-
-    Route::resource('tunjanganProjects', 'TunjanganProjectController');
-
-    Route::resource('tunjanganPositions', 'TunjanganPositionController');
-
-    Route::resource('positions', 'PositionController');
-
-    Route::resource('audits', 'AuditController');
-
-    Route::resource('accessModules', 'AccessModuleController');
-
-    Route::resource('roleAccesses', 'RoleAccessController');
-
-    Route::resource('constants', 'ConstantController');
-
-    Route::resource('userLeaves', 'UserLeaveController');
-
-    Route::resource('timesheetTransports', 'TimesheetTransportController');
-
-    Route::resource('timesheetInsentifs', 'TimesheetInsentifController');
-});
-
-
-
 Route::get('/home', array('uses'=>'HomeController@index',
 'as' => 'home'));
 
@@ -126,7 +39,22 @@ Route::get('change/{id}', array('uses' => 'UserController@change',
 
 Route::resource('approvalHistories', 'ApprovalHistoryController');
 
+Route::resource('departments', 'DepartmentController');
+
 //Route::post('holidaysimport', 'HolidayController@processSheet');
+Route::post('holidaysimport', array('uses' => 'HolidayController@processSheet',
+'as' => 'holidaysimport'));
+
+Route::resource('holidays', 'HolidayController');
+
+
+Route::resource('projects', 'ProjectController');
+
+Route::resource('projectMembers', 'ProjectMemberController');
+
+Route::resource('roles', 'RoleController');
+
+Route::resource('sequences', 'SequenceController');
 
 Route::get('timesheets/moderation', array('uses' => 'TimesheetApprovalController@moderation',
 'as' => 'timesheets.moderation'));
@@ -150,10 +78,31 @@ Route::patch('timesheets/moderation/reject', array('uses' => 'TimesheetApprovalC
 
 Route::resource('timesheets', 'TimesheetController');
 
+Route::resource('timesheetDetails', 'TimesheetDetailController');
+
+Route::resource('tunjangans', 'TunjanganController');
+
+Route::resource('tunjanganProjects', 'TunjanganProjectController');
+
+Route::resource('tunjanganPositions', 'TunjanganPositionController');
+
+Route::resource('positions', 'PositionController');
+
+Route::resource('audits', 'AuditController');
+
+Route::resource('accessModules', 'AccessModuleController');
+
+Route::resource('roleAccesses', 'RoleAccessController');
+
+
 //Example role access
 Route::get('testrole', function () {
     return 'tes';
 })->middleware('checkRole:Admin|CBS|Finance|Manager|PMO|VP');
+
+Route::resource('constants', 'ConstantController');
+
+Route::resource('userLeaves', 'UserLeaveController');
 
 Route::get('leaves/submission', array('uses' => 'LeaveController@submission',
 'as' => 'leaves.submission'));
@@ -181,6 +130,7 @@ Route::post('uploadfile', array('uses' => 'Add_Timesheet@postUploadImageFile',
 
 Route::get('rmvfile/{id}', array('uses' => 'Add_Timesheet@getRemoveImageFile',
 'as' => 'add_timesheet.rmvfile'));
+
 
 Route::get('rmvfile/{id}', array('uses' => 'Add_Timesheet@getRemoveImageFile',
 'as' => 'add_timesheet.rmvfile'));
@@ -212,6 +162,10 @@ Route::get('leaves/moderation/reject/{id}', array('uses' => 'LeaveController@mod
 
 Route::resource('leaves', 'LeaveController');
 
+Route::resource('timesheetTransports', 'TimesheetTransportController');
+
+Route::resource('timesheetInsentifs', 'TimesheetInsentifController');
+
 Route::get('report/timesheet', array('uses' => 'ReportController@timesheet',
     'as' => 'report.timesheet'));
 
@@ -224,6 +178,7 @@ Route::get('report/finance', array('uses' => 'ReportFinanceController@index',
     Route::get('project_member/{id}', array('uses' => 'ReportFinanceController@getProjectMemberJson',
 'as' => 'project_member'));
 
+    
 Route::get('/panduan', function () {
     return view('users.download');
 })->name('panduan');

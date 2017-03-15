@@ -23,15 +23,17 @@
                {!! Form::select('type',
                                   $projects,
                                   $projects,
-                                  ['class' => 'form-control select2', 'id' => 'type'])
+                                  ['class' => 'form-control select2'])
                                 !!}
               </div>
             </div>
             <div class="form-group">
-              <label for="subtype" class="col-sm-2 control-label">Member</label>       
+              <label for="subtype" class="col-sm-2 control-label">Periode</label>       
               <div class="col-sm-7">
-                <select name="subtype" id="subtype"  class="form-control">
-                    <option>-- Select project first--</option>
+                <select name="subtype" class="form-control">
+                    <option></option>
+                    <option>1</option>
+                    <option>2</option>
                 </select>
                 
               </div>

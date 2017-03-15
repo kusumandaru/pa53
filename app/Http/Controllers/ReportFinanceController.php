@@ -26,17 +26,36 @@ class ReportFinanceController extends Controller
     {
         $request = RequestFacade::all();
         $columns = ["project_name","period","iwo_wbs_code","nama_konsultan","nama_bank","cabang_bank","nama_rekening","no_rekening","total"];
-        
         if (RequestFacade::ajax()) {
             if(isset($request['type']) && isset($request['subtype'])){
-                $notes = Timesheet::getFinanceSummary($request['subtype'],$request['type']);
+              //  return '';
+                $notes = Timesheet::getFinanceSummary($request['type'],$request['subtype']);
                 return Datatables::of(collect($notes))->make(true);
             } else {
                 return Datatables::of(collect(array()))->make(true);
             }
             
         }
-        $html = Datatables::getHtmlBuilder()->columns($columns);    
+        $html = Datatables::getHtmlBuilder()->columns($columns)->ajax('')
+            ->parameters([
+                'dom' => 'Bfrtip',
+                'scrollX' => true,
+                'buttons' => [
+                    'print',
+
+                    'reload',
+                    [
+                         'extend'  => 'collection',
+                         'text'    => '<i class="fa fa-download"></i> Export',
+                         'buttons' => [
+                             'csv',
+
+                             'pdf',
+                         ],
+                    ],
+                    'colvis'
+                ]
+            ]);   
         $projects = array(0 => '') + Project::pluck('project_name', 'id')->all();
         return view('reports.finance',compact('projects','request','html'));
     }

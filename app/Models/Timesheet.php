@@ -546,15 +546,15 @@ class Timesheet extends Model
 
 
 
-    public static function getFinanceSummary($user_id, $project_id)
+    public static function getFinanceSummary($project_id,$periode)
     {
-       $array = DB::select(DB::raw("select * from (SELECT count(week)w,GROUP_CONCAT(timesheets.id) ts_id,periode,month, year,CONCAT(periode,'-',month,'-', year) as pr,week , user_id FROM timesheets group by user_id,pr) as tbl"));
+       $array = DB::select(DB::raw("select * from ( SELECT count(week)w,GROUP_CONCAT(timesheets.id) ts_id,periode,month, year,CONCAT(periode,'-',month,'-', year) as pr,week , user_id FROM timesheets where user_id in (select user_id from project_members WHERE project_id = ".$project_id.") and periode=".$periode." group by user_id,pr ) as tbl order by pr"));
        $data = array();
-       $project = DB::table('projects')->where('id', $project_id)->first();
-       $user = User::where('id','=',$user_id)->first();
         foreach ($array as $a ){
-            $total =  Timesheet::getTotalTimesheetValueByProjectsAndPeriod($a->ts_id,$project_id,$user_id);
-            if($a->w == 2 && $total > 0){
+            $project = DB::table('projects')->where('id', $project_id)->first();
+            $user = User::where('id','=',$a->user_id)->first();
+            $total =  Timesheet::getTotalTimesheetValueByProjectsAndPeriod($a->ts_id,$project_id,$a->user_id);
+           // if($a->w == 2 && $total > 0){
                 $data[] = array('timesheet_id'=>$a->ts_id,
                                 'period' => Timesheet::getPeriod($a->periode,$a->month,$a->year),
                                 'project_name'=>$project->project_name,
@@ -568,7 +568,7 @@ class Timesheet extends Model
                                 'total' => $total
                 
                 );
-            }
+           // }
         }
 
         return $data;

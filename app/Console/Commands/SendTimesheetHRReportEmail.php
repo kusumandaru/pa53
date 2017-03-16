@@ -69,8 +69,8 @@ class SendTimesheetHRReportEmail extends Command
         whereBetween('timesheet_details.created_at', [Carbon::today()->subDays(7)->toDateString(),Carbon::today()->toDateString()])->
         get(['users.nik','users.email', 'projects.project_id', 'projects.code', 'timesheet_details.activity',
              'timesheet_details.activity_detail','timesheet_details.start_time', 'timesheet_details.end_time', 
-             'timesheet_details.date', 'projects.claimable'
-            DB::raw('') 
+             'timesheet_details.date', 'projects.claimable',
+           
             DB::raw('IF(projects.claimable == 1, \'Claimable\',\'Non Claimable\')') ,
             DB::raw('timesheet_details.created_at as created_timesheet')
         ]);

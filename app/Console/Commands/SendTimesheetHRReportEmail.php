@@ -71,7 +71,7 @@ class SendTimesheetHRReportEmail extends Command
              'timesheet_details.activity_detail','timesheet_details.start_time', 'timesheet_details.end_time', 
              'timesheet_details.date', 'projects.claimable',
            
-            DB::raw('(if(claimable = 1, \'Claimable\', \'Non Claimable\')) as isClaimable') ,
+            DB::raw('(if(claimable = 1, \'Claimable\', \'Non Claimable\')) as is_claimable') ,
             DB::raw('timesheet_details.date as created_timesheet')
         ]);
 
@@ -89,7 +89,7 @@ class SendTimesheetHRReportEmail extends Command
                 'ts_date'=>$result->date,
                 'submit_date'=>$result->created_timesheet,
                 'effort_type'=>$result->activity_detail,
-                'task_type'=>$result->task_type
+                'task_type'=>$result->is_claimable
                 
         );
             $data[$count] = $res;

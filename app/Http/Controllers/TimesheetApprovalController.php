@@ -112,6 +112,7 @@ class TimesheetApprovalController extends AppBaseController
                 ->orWhere('approval_histories.group_approval_id', '=', $approval['role']);
         })->
         where('selected', '=', '1')->
+        orderBy('timesheet_details.date','asc')->
         get();
 
         $timesheet_insentif = TimesheetInsentif::
@@ -126,6 +127,7 @@ class TimesheetApprovalController extends AppBaseController
             $query->where('approval_histories.approval_id', '=', $approval['id'])
                 ->orWhere('approval_histories.group_approval_id', '=', $approval['role']);
         })->
+        orderBy('timesheet_insentif.date','asc')->
         get();
 
         $timesheet_transport = TimesheetTransport::
@@ -140,6 +142,7 @@ class TimesheetApprovalController extends AppBaseController
             $query->where('approval_histories.approval_id', '=', $approval['id'])
                 ->orWhere('approval_histories.group_approval_id', '=', $approval['role']);
         })->
+        orderBy('timesheet_transport.date','asc')->
         get();
 
         $summary = $this->populateSummary($timesheetId, $user, $approval, $approvalStatus, $timesheet_insentif, $timesheet_transport);

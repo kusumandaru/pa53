@@ -56,7 +56,7 @@ class SendTimesheetHRReportEmail extends Command
         //$arguments = $this->arguments();
         //$user = $this->argument('user');
 
-        $id = 1;
+        $id = 14; //oky
         $approvalStatus = array(1,4); //approve and paid
 
         $timesheet = TimesheetDetail::
@@ -66,15 +66,14 @@ class SendTimesheetHRReportEmail extends Command
         join('approval_histories', 'approval_histories.transaction_id', 'timesheet_details.id')->
         whereIn('approval_histories.approval_status', $approvalStatus)->
         where('approval_histories.sequence_id', '=', 0)->
-        whereBetween('timesheet_details.created_at', [Carbon::today()->subDays(15)->toDateString(),Carbon::today()->subDays(1)->toDateString()])->
+        whereBetween('timesheet_details.created_at', [Carbon::today()->subDays(9)->toDateString(),Carbon::today()->subDays(3)->toDateString()])->
         get(['users.nik','users.email', 'projects.code', 'timesheet_details.activity',
              'timesheet_details.activity_detail','timesheet_details.start_time', 'timesheet_details.end_time', 
              'timesheet_details.date', 'projects.claimable',
-           
             DB::raw('(if(claimable = 1, \'Claimable\', \'Non Claimable\')) as is_claimable') ,
             DB::raw('timesheet_details.date as created_timesheet')
         ]);
-
+        //h-9 until h-3 saturday to friday
         $data = array();
         $count = 0;
         foreach ($timesheet as $result) {
@@ -118,7 +117,7 @@ class SendTimesheetHRReportEmail extends Command
 
         // send mail
         $mail = Mail::to($user['email'])
-            //->cc('oky.gustiawan@metrasys.co.id')
+            ->cc('tmsupport@metrasys.co.id')
             ->send(new TimesheetSubmission($user, $path['full']));
 
         $this->info('Executed');

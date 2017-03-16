@@ -709,12 +709,14 @@ $(document).ajaxStop(function(){
                 e.preventDefault();
                 $('[disabled]').removeAttr('disabled');
                 $('#create_timesheet').append('<input type = "hidden" name="action" value="Submit" />');
+                checkActivity();
                 $('#create_timesheet').submit();
             });
             $('#saveBtn').click(function(e){
                 e.preventDefault();
                 $('[disabled]').removeAttr('disabled');
                 $('#create_timesheet').append('<input type = "hidden" name="action" value="Save" />');
+                checkActivity();
                 $('#create_timesheet').submit();
             });
              $("#create_timesheet").submit(function ($) {
@@ -848,6 +850,22 @@ $(document).ajaxStop(function(){
     path = path.substring(path.lastIndexOf("/")+ 1);
     return (path.match(/[^.]+(\.[^?#]+)?/) || [])[0];
 }
+
+function checkActivity(){
+    var selected = [];
+$('input:checked').each(function() {
+  selected.push($(this).attr('name'));
+});
+
+for (var i = 0; i < selected.length; i++) {
+  var row = selected[i].replace('][select]', '').replace('timesheet[', '');
+  if ($('#timesheet' + row + 'activity').val() == '' || $('#timesheet' + row + 'activity').val() == null) {
+    alert('Mohon lengkapi data timesheet yang telah Anda centang');
+    throw new Error('Mohon lengkapi data timesheet yang telah Anda centang');
+  }
+}
+}
+
 
 </script>
 

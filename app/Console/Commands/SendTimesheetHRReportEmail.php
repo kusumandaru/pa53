@@ -67,7 +67,11 @@ class SendTimesheetHRReportEmail extends Command
         whereIn('approval_histories.approval_status', $approvalStatus)->
         where('approval_histories.sequence_id', '=', 2)->
         whereBetween('timesheet_details.created_at', [Carbon::today()->subDays(7)->toDateString(),Carbon::today()->toDateString()])->
-        get(['*',
+        get(['users.nik','users.email', 'projects.project_id', 'projects.code', 'timesheet_details.activity',
+             'timesheet_details.activity_detail','timesheet_details.start_time', 'timesheet_details.end_time', 
+             'timesheet_details.date', 'projects.claimable'
+            DB::raw('') 
+            DB::raw('IF(projects.claimable == 1, \'Claimable\',\'Non Claimable\')') ,
             DB::raw('timesheet_details.created_at as created_timesheet')
         ]);
 
@@ -77,14 +81,16 @@ class SendTimesheetHRReportEmail extends Command
             //$data[] = (array)$result;
             //$res = array();
             $res = array(
-                'user_id'=>$result->nik,
-                'project_id'=>$result->project_id,
-                'wbs_id'=>$result->code,
-                'subject'=>$result->activity,
-                'message'=>$result->activity_detail,
-                'hour_total'=>$result->hour,
+                'nik'=>$result->nik,
+                'email'=>$result->email,
+                'iwo'=>$result->project_id,
+                'task_name'=>$result->activity_detail,
+                'total_work'=>$result->hour,
                 'ts_date'=>$result->date,
-                'submit_date'=>$result->created_timesheet
+                'submit_date'=>$result->created_timesheet,
+                'effort_type'=>$result->activity_detail,
+                'task_type'=>$result->task_type
+                
         );
             $data[$count] = $res;
             $count++;

@@ -66,12 +66,12 @@ class SendTimesheetHRReportEmail extends Command
         join('approval_histories', 'approval_histories.transaction_id', 'timesheet_details.id')->
         whereIn('approval_histories.approval_status', $approvalStatus)->
         where('approval_histories.sequence_id', '=', 2)->
-        whereBetween('timesheet_details.created_at', [Carbon::today()->subDays(7)->toDateString(),Carbon::today()->toDateString()])->
-        get(['users.nik','users.email', 'projects.project_id', 'projects.code', 'timesheet_details.activity',
+        whereBetween('timesheet_details.created_at', [Carbon::today()->subDays(15)->toDateString(),Carbon::today()->subDays(1)->toDateString()])->
+        get(['users.nik','users.email', 'projects.code', 'timesheet_details.activity',
              'timesheet_details.activity_detail','timesheet_details.start_time', 'timesheet_details.end_time', 
              'timesheet_details.date', 'projects.claimable',
            
-            DB::raw('IF(projects.claimable == 1, \'Claimable\',\'Non Claimable\')') ,
+            DB::raw('(if(claimable = 1, \'Claimable\', \'Non Claimable\')) as isClaimable') ,
             DB::raw('timesheet_details.created_at as created_timesheet')
         ]);
 
@@ -83,7 +83,7 @@ class SendTimesheetHRReportEmail extends Command
             $res = array(
                 'nik'=>$result->nik,
                 'email'=>$result->email,
-                'iwo'=>$result->project_id,
+                'iwo'=>$result->code,
                 'task_name'=>$result->activity_detail,
                 'total_work'=>$result->hour,
                 'ts_date'=>$result->date,

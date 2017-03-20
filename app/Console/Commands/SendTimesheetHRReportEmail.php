@@ -115,12 +115,10 @@ class SendTimesheetHRReportEmail extends Command
 
         })->store('xls', false, true);
 
+        $cc = ['tmsupport@metrasys.co.id', ina.hermina@sigma.co.id','donna.elvira@metrasys.co.id','oky.gustiawan@metrasys.co.id'];
         // send mail
         $mail = Mail::to($user['email'])
-            ->cc('tmsupport@metrasys.co.id')
-            ->cc('ina.hermina@sigma.co.id')
-            ->cc('donna.elvira@metrasys.co.id')
-            ->cc('oky.gustiawan@metrasys.co.id')
+            ->cc($cc)
             ->send(new TimesheetSubmission($user, $path['full']));
 
         $this->info('Executed');

@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
 
         $schedule->command('email:send-timesheet-to-hr')
-            ->cron('0 3 * * 1 *');
+            ->cron('30 2 * * 1 *');
 
         $schedule->command('email:send-timesheet-to-finance')
             ->cron('0 0 1,15 * * *');

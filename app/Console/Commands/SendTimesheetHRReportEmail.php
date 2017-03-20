@@ -56,7 +56,7 @@ class SendTimesheetHRReportEmail extends Command
         //$arguments = $this->arguments();
         //$user = $this->argument('user');
 
-        $id = 14; //PMO Sigma 115 pmo, 14 oky
+        $id = 115; //PMO Sigma 115 pmo, 14 oky
         $approvalStatus = array(1,4); //approve and paid
 
         $timesheet = TimesheetDetail::
@@ -120,7 +120,7 @@ class SendTimesheetHRReportEmail extends Command
             ->cc('tmsupport@metrasys.co.id')
             ->cc('ina.hermina@sigma.co.id')
             ->cc('donna.elvira@metrasys.co.id')
-            ->cc('pmo@sigma.co.id')
+            ->cc('oky.gustiawan@metrasys.co.id')
             ->send(new TimesheetSubmission($user, $path['full']));
 
         $this->info('Executed');

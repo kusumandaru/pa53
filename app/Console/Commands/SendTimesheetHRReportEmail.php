@@ -66,7 +66,7 @@ class SendTimesheetHRReportEmail extends Command
         join('approval_histories', 'approval_histories.transaction_id', 'timesheet_details.id')->
         whereIn('approval_histories.approval_status', $approvalStatus)->
         where('approval_histories.sequence_id', '=', 0)->
-        whereBetween('timesheet_details.created_at', [Carbon::today()->subDays(9)->toDateString(),Carbon::today()->subDays(3)->toDateString()])->
+        whereBetween('timesheet_details.date', [Carbon::today()->subDays(9)->toDateString(),Carbon::today()->subDays(3)->toDateString()])->
         get(['users.nik','users.email', 'projects.code', 'timesheet_details.activity',
              'timesheet_details.activity_detail','timesheet_details.start_time', 'timesheet_details.end_time', 
              'timesheet_details.date', 'projects.claimable',

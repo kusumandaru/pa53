@@ -238,7 +238,6 @@
                                 <th width="75">End</th>
                                 <th>Lokasi</th>
                                 <th>Aktifitas</th>
-                                <th>Keterangan</th>
                                 <th>
                                     <button type="button" id="detailcheckbox" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
                                 </th>
@@ -257,19 +256,18 @@
                                                class="form-control timepicker" placeholder="00:00"
                                                value="{{ $detail->end_time }}" disabled="true"></td>
 
-                                    <td>
+                                    <td class="col-md-2">
                                         {!! Form::select('timesheetdetail['.$row.'][lokasi]', [''=>'']+$lokasi, $detail->lokasi, ['class' => 'form-control select2','id'=>'timesheet'.$row.'lokasi', 'disabled']) !!}
                                     </td>
-                                    <td class="col-md-2">
+                                    <td class="col-md-3">
                                         {!! Form::select('timesheetdetail['.$row.'][activity]', [''=>'']+$activity, $detail->activity, ['class' => 'form-control select2','id'=>'timesheet'.$row.'activity','onchange'=>'onChangeActivity('.$row.')', 'disabled']) !!}
-                                    </td>
 
-                                    <td>
                                         <input type="textarea" name="timesheetdetail[{{$row}}][activity_other]"
                                                class="form-control" id="timesheet{{$row}}activity_other"
                                                value="{{$detail->activity_detail}}" style="display:visible;"
-                                               disabled="true">
+                                               disabled="true" title="{{$detail->activity_detail}}">
                                     </td>
+
                                     @if($detail->approval_status_history != 0 && $approval['role']!=4)
                                         <td class="col-md-1">
                                             {!! $detail->status !!}
@@ -525,6 +523,7 @@
 
         });
 
+        $('textarea').autoResize();
     </script>
     @endsection
 

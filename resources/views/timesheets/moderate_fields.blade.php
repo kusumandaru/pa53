@@ -328,7 +328,7 @@
                                     {{ Form::text('insentif['.$row.'][value]', $detail->value, array('class' => 'form-control money', 'disabled')) }}
                                     <td>
                                     <td class="col-md-3">
-                                        {{ Form::text('insentif['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control', 'disabled')) }}
+                                        {{ Form::text('insentif['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control', 'disabled', 'title' => $detail->keterangan)) }}
                                     </td>
                                     @if($detail->approval_status != 0 && $approval['role']!=4)
                                         <td class="col-md-1">
@@ -391,7 +391,7 @@
                                     <td class="col-md-2">
                                     {{ Form::text('trans['.$row.'][value]', $detail->value, array('class' => 'form-control money','disabled')) }}
                                     <td class="col-md-3">
-                                        {{ Form::text('trans['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control','disabled')) }}
+                                        {{ Form::text('trans['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control','disabled', 'title' => $detail->keterangan)) }}
                                     </td>
                                     <td class="col-md-1">
                                         @if($detail->file!=null)

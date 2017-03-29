@@ -91,14 +91,20 @@ class SendTimesheetFinanceReportEmail extends Command
             //get data
             $excel->sheet('timesheet', function($sheet) use ($timesheet, $data) {
                 $sheet->fromModel($data, null, 'A1', true);
+                $sheet->appendRow(array(
+                    'total', count($data)
+                ));
             });
+
+            // Append row as very last
+
 
         })->store('xls', false, true);
 
         // send mail
-        $mail = Mail::to($user['email'])
-            ->cc('rudy.febrianto@metrasys.co.id')
-            ->send(new TimesheetSubmission($user, $path['full']));
+        //$mail = Mail::to($user['email'])
+        //    ->cc('rudy.febrianto@metrasys.co.id')
+        //    ->send(new TimesheetSubmission($user, $path['full']));
 
         $this->info('Executed');
         

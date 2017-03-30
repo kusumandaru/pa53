@@ -551,7 +551,7 @@ $(document).ajaxStop(function(){
     </script>
     <script>
         $(document).ready(function () {
-            for (i = 0; i < 7; i++) {
+            for (i = 0; i < 10; i++) {
                 if (($('#select2-timesheet' + i + 'activity-container').text() === 'IMPLEMENTASI') || ($('#select2-timesheet' + i + 'activity-container').text() === 'MANAGED OPERATION') || ($('#select2-timesheet' + i + 'activity-container').text() === 'IDLE')) {
                     $('#timesheet' + i + 'activity_other').show();
                 } else {

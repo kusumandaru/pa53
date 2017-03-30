@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Request as RequestFacade;
 use Yajra\Datatables\Facades\Datatables;
 
+
 class ReportFinanceController extends Controller
 {
     public function __construct()
@@ -36,26 +37,7 @@ class ReportFinanceController extends Controller
             }
             
         }
-        $html = Datatables::getHtmlBuilder()->columns($columns)->ajax('')
-            ->parameters([
-                'dom' => 'Bfrtip',
-                'scrollX' => true,
-                'buttons' => [
-                    'print',
-
-                    'reload',
-                    [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
-                         'buttons' => [
-                             'csv',
-
-                             'pdf',
-                         ],
-                    ],
-                    'colvis'
-                ]
-            ]);   
+        $html = Datatables::getHtmlBuilder()->columns($columns);
         $projects = array(0 => '') + Project::pluck('project_name', 'id')->all();
         return view('reports.finance',compact('projects','request','html'));
     }
@@ -73,5 +55,17 @@ class ReportFinanceController extends Controller
     public function ajax()
     {
         return response()->json(Timesheet::getFinanceSummary(1,1));
+    }
+
+    public function getExcel($project_id,$period) {
+        $data = Timesheet::getFinanceSummary(11,1);
+        Excel::create('Filename', function($excel) use($data) {
+
+        $excel->sheet('Sheetname', function($sheet) use($data) {
+        $sheet->fromModel($data, null, 'A1', true);
+        $sheet->appendRow(array('','','','','','','','','Subtotal', collect($data)->sum('total')));
+    });
+    })->export('csv');
+       
     }
 }

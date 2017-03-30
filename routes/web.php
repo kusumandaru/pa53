@@ -178,6 +178,9 @@ Route::get('report/finance', array('uses' => 'ReportFinanceController@index',
     Route::get('project_member/{id}', array('uses' => 'ReportFinanceController@getProjectMemberJson',
 'as' => 'project_member'));
 
+ Route::get('report/finance/download/{project_id}/{period}', array('uses' => 'ReportFinanceController@getExcel',
+'as' => 'report.finance.download'));
+
     
 Route::get('/panduan', function () {
     return view('users.download');

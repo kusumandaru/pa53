@@ -22,7 +22,7 @@
               <div class="col-sm-7">
                {!! Form::select('type',
                                   $projects,
-                                  $projects,
+                                  isset($_GET['subtype']) && isset($_GET['type']) ? $_GET['type'] : $projects,
                                   ['class' => 'form-control select2'])
                                 !!}
               </div>
@@ -30,24 +30,30 @@
             <div class="form-group">
               <label for="subtype" class="col-sm-2 control-label">Periode</label>       
               <div class="col-sm-7">
-                <select name="subtype" class="form-control">
-                    <option></option>
-                    <option>1</option>
-                    <option>2</option>
-                </select>
+              {!! Form::select('subtype',
+                                  array(1 => 1,2 =>2),
+                                  isset($_GET['subtype']) && isset($_GET['type']) ? $_GET['subtype'] : '',
+                                  ['class' => 'form-control select2'])
+                                !!}
+                
                 
               </div>
               <div class="form-group">
               <button class="btn btn-info btn-flat">submit</button>
                 
               </div>
-            </div>         
+            </div>        
+             <div class="form-group">
+              <?php if(isset($_GET['subtype']) && isset($_GET['type'])){
+    ?>
+<a href="{{ URL::route('report.finance.download',['id'=>$_GET['type'],'period'=>$_GET['subtype']]) }}">Download</a>
+<?php } ?>     
+              <div class="col-sm-5">
+              </div>
+            </div>    
           </form>      
-
-
-
-
              <div class="box-body">
+             
                @section('css')
             @include('layouts.datatables_css')
             @endsection

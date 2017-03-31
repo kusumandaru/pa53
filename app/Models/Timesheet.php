@@ -564,7 +564,7 @@ class Timesheet extends Model
                                 'cabang_bank'=>$user->cabang,
                                 'nama_rekening'=>$user->nama_rekening,
                                 'no_rekening'=>$user->rekening,
-                                'status'=> 'not validated',
+                               // 'status'=> 'not validated',
                                 'total' => $total
                 
                 );

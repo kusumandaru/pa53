@@ -58,12 +58,18 @@ class ReportFinanceController extends Controller
     }
 
     public function getExcel($project_id,$period) {
-        $data = Timesheet::getFinanceSummary(11,1);
-        Excel::create('Filename', function($excel) use($data) {
+        $project = DB::table('projects')->where('id', $project_id)->first();
+        $pm = DB::table('users')->where('id', $project->pm_user_id)->first();
+        $data = Timesheet::getFinanceSummary($project_id,$period);
+        Excel::create($project->project_name, function($excel) use($data,$project,$pm) {
 
-        $excel->sheet('Sheetname', function($sheet) use($data) {
+        $excel->sheet('sheet', function($sheet) use($data,$pm) {
         $sheet->fromModel($data, null, 'A1', true);
-        $sheet->appendRow(array('','','','','','','','','Subtotal', collect($data)->sum('total')));
+        $sheet->appendRow(array('','','','','','','','Subtotal', collect($data)->sum('total')));
+        $sheet->appendRow(array('PM','','','','','','','',''));
+        $sheet->appendRow(array('','','','','','','','',''));
+        $sheet->appendRow(array('','','','','','','','',''));
+        $sheet->appendRow(array($pm->name,'','','','','','','',''));
     });
     })->export('csv');
        

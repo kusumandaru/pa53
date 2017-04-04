@@ -71,6 +71,8 @@ class ReportFinanceController extends Controller
         $sheet->appendRow(array('','','','','','','','',''));
         $sheet->appendRow(array('',$pm->name,'','','','','','',''));
     });
+    set_time_limit(0);
+    ini_set('memory_limit', '1G');
     ob_end_clean();
     })->export('xlsx');
        

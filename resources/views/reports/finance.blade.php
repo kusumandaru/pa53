@@ -31,7 +31,7 @@
               <label for="subtype" class="col-sm-2 control-label">Periode</label>       
               <div class="col-sm-7">
               {!! Form::select('subtype',
-                                  array(1 => 1,2 =>2),
+                                  array(''=>'',1 => 1,2 =>2),
                                   isset($_GET['subtype']) && isset($_GET['type']) ? $_GET['subtype'] : '',
                                   ['class' => 'form-control select2'])
                                 !!}

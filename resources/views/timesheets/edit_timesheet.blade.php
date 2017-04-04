@@ -502,7 +502,7 @@
             {{ Form::hidden('month', $timesheet->month) }}
             {{ Form::hidden('year', $timesheet->year) }}
             {{ Form::hidden('week', $timesheet->week) }}
-            {{ Form::hidden('period', getListDate($timesheet->year,$timesheet->month,$timesheet->week)['period']) }}
+            {{ Form::hidden('period', $timesheet->periode) }}
 
             <div class="form-group col-sm-12">
             @if($timesheet->action === 'Disimpan')

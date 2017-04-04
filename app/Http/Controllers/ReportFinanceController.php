@@ -66,12 +66,13 @@ class ReportFinanceController extends Controller
         $excel->sheet('sheet', function($sheet) use($data,$pm) {
         $sheet->fromModel($data, null, 'A1', true);
         $sheet->appendRow(array('','','','','','','','Subtotal', collect($data)->sum('total')));
-        $sheet->appendRow(array('PM','','','','','','','',''));
+        $sheet->appendRow(array('','PM','','','','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));
-        $sheet->appendRow(array($pm->name,'','','','','','','',''));
+        $sheet->appendRow(array('',$pm->name,'','','','','','',''));
     });
-    })->export('csv');
+    ob_end_clean();
+    })->export('xlsx');
        
     }
 }

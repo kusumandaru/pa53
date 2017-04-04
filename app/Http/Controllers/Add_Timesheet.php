@@ -691,7 +691,8 @@ class Add_Timesheet extends Controller
     public function getColumns()
     {
        //getFinanceSummary($user_id, $project_id)
-       //return response()->json(Timesheet::getFinanceSummary(11,1));
+      // return response()->json($timesheet = Timesheet::where('id', '=', 231)->first());
+       return response()->json(Timesheet::getFinanceSummary(7,1));
        return response()->json(DB::table('projects')->where('id', 1)->first());
        return $user = DB::table('users')
             ->where('id', $userId)
@@ -743,6 +744,7 @@ class Add_Timesheet extends Controller
         //         'fail' => true,
         //         'errors' => $validator->getMessageBag()->toArray()
         //     );
+        
         $extension = $request->file('file')->getClientOriginalExtension(); // getting image extension
         $dir = 'upload/';
         $filename = uniqid() . '_' . time() . '.' . $extension;
@@ -756,6 +758,7 @@ class Add_Timesheet extends Controller
     }
 
     public function downloadFile($filename){
+        ob_end_clean();
         return response()->download(public_path('upload/'.$filename));
     }
 

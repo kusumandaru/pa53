@@ -60,16 +60,17 @@ class ReportFinanceController extends Controller
     public function getExcel($project_id,$period) {
         $project = DB::table('projects')->where('id', $project_id)->first();
         $pm = DB::table('users')->where('id', $project->pm_user_id)->first();
+        $pmo = DB::select(DB::raw('select users.name from approval_histories join users ON users.id = approval_histories.approval_id where approval_histories.sequence_id=1 and approval_histories.transaction_type=2 and approval_status=1 and approval_histories.transaction_id in ( select timesheet_details.id from timesheet_details where project_id = '.$project_id.') AND users.deleted_at IS NULL ORDER BY approval_id LIMIT 1'))[0]->name;
         $data = Timesheet::getFinanceSummary($project_id,$period);
-        Excel::create($project->project_name, function($excel) use($data,$project,$pm) {
+        Excel::create($project->project_name, function($excel) use($data,$project,$pm,$pmo) {
 
-        $excel->sheet('sheet', function($sheet) use($data,$pm) {
+        $excel->sheet('sheet', function($sheet) use($data,$pm,$pmo) {
         $sheet->fromModel($data, null, 'A1', true);
         $sheet->appendRow(array('','','','','','','','Subtotal', collect($data)->sum('total')));
-        $sheet->appendRow(array('','PM','','','','','','',''));
+        $sheet->appendRow(array('','PM','','','PMO','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));
-        $sheet->appendRow(array('',$pm->name,'','','','','','',''));
+        $sheet->appendRow(array('',$pm->name,'','',$pmo,'','','',''));
     });
     set_time_limit(0);
     ini_set('memory_limit', '1G');

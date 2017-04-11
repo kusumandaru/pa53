@@ -265,10 +265,10 @@
                                             {!! Form::hidden('timesheet['.$row.'][project]', $detail->project_id) !!}
                                         </td>
                                         <td>{{date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
-                                        <td><input type="text" name="timesheet[{{$row}}][start]"
+                                        <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][start]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->start_time }}" readonly></td>
-                                        <td><input type="text" name="timesheet[{{$row}}][end]"
+                                        <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][end]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->end_time }}" readonly></td>
 
@@ -296,10 +296,10 @@
                                             {!! Form::select('timesheet['.$row.'][project]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control select2']) !!}
                                         </td>
                                         <td>{{date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
-                                        <td><input type="text" name="timesheet[{{$row}}][start]"
+                                        <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][start]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->start_time }}"></td>
-                                        <td><input type="text" name="timesheet[{{$row}}][end]"
+                                        <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][end]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->end_time }}"></td>
 

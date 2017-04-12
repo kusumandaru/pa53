@@ -144,7 +144,7 @@
                                 <td class="col-md-3">
                                     {!! Form::select('timesheet['.$row.'][project]', [''=>'']+$project, null, ['class' => 'form-control select2']) !!}
                                 </td>
-                                <td class="col-md-1">{{date('d-m-Y', strtotime($date))}}{{ Form::hidden('timesheet['.$row.'][date]', $date) }}</td>
+                                <td class="col-md-1">{{date('D , d-m-Y', strtotime($date))}}{{ Form::hidden('timesheet['.$row.'][date]', $date) }}</td>
                                 <td class="col-md-1"><input type="text" name="timesheet[{{$row}}][start]"
                                                             class="form-control timepicker" value="08:00"></td>
                                 <td class="col-md-1"><input type="text" name="timesheet[{{$row}}][end]"

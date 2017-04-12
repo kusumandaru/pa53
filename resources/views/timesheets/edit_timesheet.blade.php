@@ -26,6 +26,11 @@
                 return array('period' => $period, 'week' => $w, 'year' => $y, 'listDate' => $listDate);
             }
 
+            function isWeekend($date)
+            {
+                return (date('N', strtotime($date)) >= 6);
+            }
+
             ?>
 
 
@@ -254,17 +259,18 @@
                             </tr>
                             @foreach ($timesheet_details as $row=>$detail)
                                 @if($detail->approval_status == 1 && $detail->selected==1)
-                                    <tr>
+                                    <tr {!! isWeekend(date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))) ? 'style="background-color: antiquewhite; "' : ''; !!}>
                                         {{ Form::hidden('timesheet['.$row.'][id]', $detail->id) }}
                                         <td class="col-md-1">
                                             {{ Form::checkbox('timesheet['.$row.'][select]', true, $detail->selected,['disabled'=>'']) }}
                                             {{ Form::hidden('timesheet['.$row.'][select]',  $detail->selected) }}
+                                            {!! Form::hidden('timesheet['.$row.'][approval_status]', $detail->approval_status) !!}
                                         </td>
                                         <td>
                                             {!! Form::select('timesheet['.$row.'][project]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control ','disabled'=>'disabled']) !!}
                                             {!! Form::hidden('timesheet['.$row.'][project]', $detail->project_id) !!}
                                         </td>
-                                        <td>{{date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
+                                        <td>{{date('D , d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
                                         <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][start]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->start_time }}" readonly></td>
@@ -287,15 +293,16 @@
                                         <td>{!! $detail->status !!}</td>
                                     </tr>
                                 @else
-                                    <tr>
+                                    <tr {!! isWeekend(date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))) ? 'style="background-color: antiquewhite; "' : ''; !!}>
                                         {{ Form::hidden('timesheet['.$row.'][id]', $detail->id) }}
                                         <td class="col-md-1">
-                                            {{ Form::checkbox('timesheet['.$row.'][select]', true, $detail->selected) }}
+                                            {{ Form::checkbox('timesheet['.$row.'][select]', true, $detail->selected) }}                                         
+                                        {!! Form::hidden('timesheet['.$row.'][approval_status]', $detail->approval_status) !!}
                                         </td>
                                         <td>
                                             {!! Form::select('timesheet['.$row.'][project]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control select2']) !!}
                                         </td>
-                                        <td>{{date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
+                                        <td>{{date('D , d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
                                         <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][start]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->start_time }}"></td>
@@ -506,13 +513,9 @@
 
             <div class="form-group col-sm-12">
             @if($timesheet->action === 'Disimpan')
-            {!! Form::submit('Save',['name'=>'action','class' => 'btn btn-primary','id'=>'saveBtn']) !!}
+            {!! Form::submit('Save',['name'=>'action','class' => 'btn btn-primary','id'=>'saveBtn']) !!}           
             @endif
             {!! Form::submit('Submit',['name'=>'action','class' => 'btn btn-primary','id'=>'submitBtn']) !!}
-            
-            
-                
-                
             </div>
             <div class="clearfix"></div>
             {!! Form::close() !!}

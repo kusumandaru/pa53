@@ -65,11 +65,16 @@ class ReportFinanceController extends Controller
         Excel::create($project->project_name, function($excel) use($data,$project,$pm,$pmo) {
 
         $excel->sheet('sheet', function($sheet) use($data,$pm,$pmo) {
+            $sheet->setColumnFormat(array(
+                   'I' => '###,###,###,##0.00'
+            ));
         $sheet->fromModel($data, null, 'A1', true);
         $sheet->appendRow(array('','','','','','','','Subtotal', collect($data)->sum('total')));
         $sheet->appendRow(array('','PM','','','PMO','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));
+        $sheet->appendRow(array('','','','','','','','',''));
+        $sheet->appendRow(array('',date('d-m-Y'),'','',date('d-m-Y'),'','','',''));
         $sheet->appendRow(array('',$pm->name,'','',$pmo,'','','',''));
     });
     set_time_limit(0);

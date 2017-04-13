@@ -327,7 +327,7 @@ class Add_Timesheet extends Controller
                     'project_id' => $value['project'],
                     'selected' => isset($value['select']) ? 1 : 0,
                     'activity_detail' => $value['activity_other'],
-                    'approval_status' => $approval_status,
+                    'approval_status' => isset($value['select']) ? 1 : 0,
                     'user_type' => $this->getUserType($value['project'])
                 ] + (isset($value['id']) ? array('id' => $value['id']) : array());
         }
@@ -344,7 +344,7 @@ class Add_Timesheet extends Controller
                         'guid'=> $value['guid'],
                         'timesheet_id' => $id,
                         'status' => $approval_status,
-                    'user_type' => $this->getUserType($value['project_id'])
+                        'user_type' => $this->getUserType($value['project_id'])
                         //   'project_id'=> $value['project'],
                     ];// + (isset($value['id']) ? array('id' => $value['id']) : array());
             }
@@ -361,7 +361,7 @@ class Add_Timesheet extends Controller
                         'timesheet_id' => $id,
                         'guid'=> $value['guid'],
                         'status' => $approval_status,
-                    'user_type' => $this->getUserType($value['project_id'])
+                        'user_type' => $this->getUserType($value['project_id'])
                         //   'project_id'=> $value['project'],
                     ] ;//+ (isset($value['id']) ? array('id' => $value['id']) : array());
             }

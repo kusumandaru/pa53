@@ -231,7 +231,7 @@
             @endif
             <div class="form-group col-sm-12">
                 {!! Form::submit('Submit',['name'=>'action','class' => 'btn btn-primary','id'=>'submitBtn']) !!}
-                {!! Form::submit('Save',['name'=>'action','class' => 'btn btn-primary','id'=>'saveBtn']) !!}
+              <!--  {!! Form::submit('Save',['name'=>'action','class' => 'btn btn-primary','id'=>'saveBtn']) !!} -->
             </div>
             <div class="clearfix"></div>
             {!! Form::close() !!}

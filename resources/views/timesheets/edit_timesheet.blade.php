@@ -513,8 +513,7 @@
 
             <div class="form-group col-sm-12">
             @if($timesheet->action === 'Disimpan')
-            {!! Form::submit('Save',['name'=>'action','class' => 'btn btn-primary','id'=>'saveBtn']) !!}           
-            @endif
+<!--  {!! Form::submit('Save',['name'=>'action','class' => 'btn btn-primary','id'=>'saveBtn']) !!} -->            @endif
             {!! Form::submit('Submit',['name'=>'action','class' => 'btn btn-primary','id'=>'submitBtn']) !!}
             </div>
             <div class="clearfix"></div>

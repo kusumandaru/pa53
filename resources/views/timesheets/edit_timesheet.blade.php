@@ -421,32 +421,32 @@
                     <div class="box-body">
                         <table class="table table-hover small-text" id="tb_trasnportasi">
                             <tr class="tr-header">
-                                <th>Tanggal</th>
-                                <th>Proyek</th>
-                                <th>Jumlah</th>
-                                <th>Keterangan</th>
-                                <th>File</th>
-                                <th>Approval</th>
-                                <th><a href="javascript:void(0);" style="font-size:18px;" id="addTransportasi"
+                                <th class="col-md-1">Tanggal</th>
+                                <th class="col-md-2">Proyek</th>
+                                <th class="col-md-1">Jumlah</th>
+                                <th class="col-md-1">Keterangan</th>
+                                <th class="col-md-1">File</th>
+                                <th class="col-md-1">Approval</th>
+                                <th class="col-md-1"><a href="javascript:void(0);" style="font-size:18px;" id="addTransportasi"
                                        title="Add Transportasi"><span class="glyphicon glyphicon-plus"></span></a>
                                 </th>
                             </tr>
                             @foreach ($timesheet_transport as $row=>$detail)
                                 @if($detail->status != 1)
                                 <tr>
-                                    <td>
+                                    <td class="col-md-1">
                                     {{ Form::hidden('trans['.$row.'][id]', $detail->id) }}
                                     {{ Form::hidden('trans['.$row.'][guid]', $detail->guid) }}
                                     {{ Form::date('trans['.$row.'][date]', $detail->date, array('class' => 'form-control','data-date-format'=>'dd/mm/yyyy')) }}
-                                    <td>
+                                    <td class="col-md-2">
                                         {!! Form::select('trans['.$row.'][project_id]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control select2']) !!}
                                     </td>
-                                    <td>
+                                    <td class="col-md-2">
                                     {{ Form::text('trans['.$row.'][value]', $detail->value, array('class' => 'form-control money')) }}
                                     <td>
                                         {{ Form::text('trans['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control')) }}
                                     </td>
-                                    <td>
+                                    <td class="col-md-1">
                                     <center>
                                             <p>
                                                 <a href="javascript:changeProfile({{$row}})" style="text-decoration: none;"><i                               class="glyphicon glyphicon-edit"></i> Change</a>&nbsp;&nbsp;
@@ -459,28 +459,28 @@
                                             <input type="file" id="file{{$row}}" onchange="fileChange({{$row}})" style="display: none"/>
                                         </center>
                                     </td>
-                                    <td>{!!$detail->approval!!}</td>
+                                    <td class="col-md-1">{!!$detail->approval!!}</td>
                                     <td><a href="javascript:void(0);" class="remove">
                                     <span class="glyphicon glyphicon-remove"></span></a></td>
                                 </tr>
                                 @else
                                 <tr>
-                                    <td>
+                                    <td class="col-md-1">
                                     {{ Form::hidden('trans['.$row.'][id]', $detail->id) }}
                                     {{ Form::hidden('trans['.$row.'][guid]', $detail->guid) }}
                                     {{ Form::hidden('trans['.$row.'][date]', $detail->date) }}
                                     {{ Form::date('trans['.$row.'][date]', $detail->date, array('class' => 'form-control','disabled'=>'','data-date-format'=>'dd/mm/yyyy')) }}
-                                    <td>
+                                    <td class="col-md-2">
                                     {{ Form::hidden('trans['.$row.'][project_id]', $detail->project_id) }}
-                                    {!! Form::select('trans['.$row.'][project_id]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control select2','disabled'=>'']) !!}
+                                    {!! Form::select('trans['.$row.'][project_id]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control','disabled'=>'']) !!}
                                     </td>
                                     <td>
                                     {{ Form::hidden('trans['.$row.'][value]', $detail->value) }}
                                     {{ Form::text('trans['.$row.'][value]', $detail->value, array('class' => 'form-control money','readonly'=>'')) }}
-                                    <td>
+                                    <td class="col-md-2">
                                         {{ Form::text('trans['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control','readonly'=>'')) }}
                                     </td>
-                                    <td>
+                                    <td class="col-md-1">
                                     <center>
                                             <p>
                                                 <a target="_blank" href="{{url('dl')}}/{{$detail->file}}" id="dl{{$row}}">{{$detail->file}}</a>
@@ -489,7 +489,7 @@
                                             <input type="file" id="file{{$row}}" onchange="fileChange({{$row}})" style="display: none"/>
                                         </center>
                                     </td>
-                                    <td>{!!$detail->approval!!}</td>
+                                    <td class="col-md-1">{!!$detail->approval!!}</td>
                                     <td><a href="javascript:void(0);" class="remove">
                                     <span class="glyphicon glyphicon-remove"></span></a></td>
                                 </tr>

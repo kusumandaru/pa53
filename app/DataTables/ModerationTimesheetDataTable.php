@@ -49,8 +49,16 @@ class ModerationTimesheetDataTable extends DataTable
         {
             $approvalStatus = $request['approvalStatus'];
         }
+
+        if(empty($request['search']['value']))
+        {
+            $name = '';
+        } else
+        {
+            $name = $request['search']['value'];
+        }
         
-        $timesheets = Timesheet::getapprovalmoderation($user, $approvalStatus);
+        $timesheets = Timesheet::getapprovalmoderation($user, $approvalStatus, $name);
 
         return $this->applyScopes($timesheets);
     }
@@ -67,7 +75,7 @@ class ModerationTimesheetDataTable extends DataTable
             ->addAction(['width' => '10%'])
             ->ajax('')
             ->parameters([
-                'bFilter' => false,
+                'bFilter' => true,
                 'dom' => 'Bfrtip',
                 'scrollX' => true,
                 'order'   => [[1, 'asc'],[2, 'asc']],

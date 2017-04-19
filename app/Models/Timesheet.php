@@ -103,18 +103,9 @@ class Timesheet extends Model
     ];
     protected $appends = ['total', 'monthname', 'status', 'link', 'approval','submitted'];
 
-    public static function getapprovalmoderation($approval, $approvalStatus)
+    public static function getapprovalmoderation($approval, $approvalStatus, $name)
     {
-        /**
-        $result = Timesheet::getwaitingname($approval, $approvalStatus);
-        foreach ($result as $r) {
-            $r->count = Timesheet::getapprovalcount($r->user_id, $approval, $approvalStatus);
-            $total = Timesheet::gettotaltunjangan($r->user_id, $approval, $approvalStatus);
-            $r->insentif = "Rp ". number_format($total, 0 , ',' , '.' );
-        }
-         * **/
-
-        $result = Timesheet::getwaitingtimesheet($approval, $approvalStatus);
+        $result = Timesheet::getwaitingtimesheet($approval, $approvalStatus, $name);
         foreach ($result as $r) {
             $r->count = Timesheet::getapprovalcounttimesheet($r->user_id, $r->id, $approval, $approvalStatus);
             $total = Timesheet::gettotaltunjangantimesheet($r->user_id, $r->id, $approval, $approvalStatus);
@@ -124,7 +115,7 @@ class Timesheet extends Model
         return $result;
     }
 
-    public static function getwaitingtimesheet($approval, $approvalStatus)
+    public static function getwaitingtimesheet($approval, $approvalStatus, $name)
     {
         $result = DB::table('timesheets')
             ->select('timesheets.id','timesheets.week', 'timesheets.month', 'timesheets.year', 'approval_histories.user_id', 'users.name', 'approval_histories.approval_id', 'approval_histories.approval_status')
@@ -133,6 +124,7 @@ class Timesheet extends Model
             ->join('users', 'users.id', 'approval_histories.user_id')
             ->where('approval_histories.approval_status', '=', $approvalStatus)
             ->where('transaction_type', '=', 2)
+            ->where('users.name', 'like', '%'.$name.'%')
             ->where(function ($query) use ($approval) {
                 $query->where('approval_histories.approval_id', '=', $approval->id)
                     ->orWhere('approval_histories.group_approval_id', '=', $approval->role);

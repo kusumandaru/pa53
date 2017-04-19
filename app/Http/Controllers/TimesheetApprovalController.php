@@ -87,7 +87,7 @@ class TimesheetApprovalController extends AppBaseController
         $approvalStatus = $request->approvalStatus;
         $timesheetId = $request->timesheetId;
 
-        $user = User::where('id', '=', $userId)->select('id')->first();
+        $user = User::where('id', '=', $userId)->first();
         $approval = User::where('id', '=', $approvalId)->select('id','role')->first();
 
         if($approval==null)

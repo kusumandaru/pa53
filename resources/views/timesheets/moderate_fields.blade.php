@@ -42,8 +42,16 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">TIMESHEET APPROVAL SUMMARY</h3>
                         <td></td>
+                        <div class="box-body box-profile">
+                            @if(!empty($user['image']))
+                                {{ Html::image('profilepics/'.$user['image'], 'User Image', array('class' => 'profile-user-img img-responsive img-circle')) }}
+                            @else
+                                <i class="profile-user-img img-responsive img-circle icon ion-person" style="text-align: center;font-size: 55px; color: antiquewhite"></i>
+                            @endif
+                            <h3 class="profile-username text-center">{{$user['name']}}</h3>
+                            <p class="text-muted text-center">{{$user['positions']->name}}</p>
+                        </div>
                         </br>
-                        <h2 class="box-title">{{$user['name']}}</h2>
                     </div>
                     <div class="box-body">
                         <table class="table summary project">

@@ -101,7 +101,7 @@
             <div class="clearfix"></div>
 
 
-            {!! Form::open(['route' => 'add_timesheet.create','id'=>'create_timesheet']) !!}
+            {!! Form::open(['route' => 'add_timesheet.create','id'=>'create_timesheet','onsubmit'=>'return beforeSubmit();']) !!}
 
             <div class="clearfix"></div>
 
@@ -584,6 +584,12 @@ for (var i = 0; i < selected.length; i++) {
 }
 }
 
+function beforeSubmit() {
+    if (confirm("Are you sure, you want to submit form?")) {
+        return true;
+    } 
+    return false;
+}
 
 
 </script>

@@ -37,7 +37,7 @@
             <div class="clearfix"></div>
 
 
-            {!! Form::open(['route' => 'add_timesheet.create','id'=>'create_timesheet']) !!}
+            {!! Form::open(['route' => 'add_timesheet.create','id'=>'create_timesheet','onsubmit'=>'return beforeSubmit();']) !!}
 
             <div class="clearfix"></div>
 
@@ -866,6 +866,13 @@ for (var i = 0; i < selected.length; i++) {
     throw new Error('Mohon lengkapi data timesheet yang telah Anda centang');
   }
 }
+}
+
+function beforeSubmit() {
+    if (confirm("Centang timesheet yang diinginkan untuk dikirim. Dan uncentang timesheet yang ingin disimpan untuk diedit di lain waktu")) {
+        return true;
+    } 
+    return false;
 }
 
 

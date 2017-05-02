@@ -71,6 +71,7 @@ class ReportFinanceController extends Controller
         $sheet->fromModel($data, null, 'A1', true);
         $sheet->appendRow(array('','','','','','','','Subtotal', collect($data)->sum('total')));
         $sheet->appendRow(array('','PM','','','PMO','','','',''));
+        $sheet->appendRow(array('','Approved','','','Approved','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));
         $sheet->appendRow(array('','','','','','','','',''));

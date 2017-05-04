@@ -21,7 +21,8 @@
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "owen-it/laravel-auditing": "^3.1",
         "maatwebsite/excel": "^2.1",
-        "hootlex/laravel-moderation": "^1.0"
+        "hootlex/laravel-moderation": "^1.0",
+        "tecnick.com/tcpdf": "6.0.099"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

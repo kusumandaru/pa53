@@ -46,8 +46,10 @@
              <div class="form-group">
               <?php if(isset($_GET['subtype']) && isset($_GET['type'])){
     ?>
-<a href="{{ URL::route('report.finance.download',['id'=>$_GET['type'],'period'=>$_GET['subtype']]) }}">Download</a>
-<?php } ?>     
+<a href="{{ URL::route('report.finance.download',['id'=>$_GET['type'],'period'=>$_GET['subtype']]) }}" class="btn btn-default">Excel</a>
+<a href="{{ URL::route('report.finance.downloadpdf',['id'=>$_GET['type'],'period'=>$_GET['subtype']]) }}" class="btn btn-default">PDF</a>
+
+<?php } ?>
               <div class="col-sm-5">
               </div>
             </div>    

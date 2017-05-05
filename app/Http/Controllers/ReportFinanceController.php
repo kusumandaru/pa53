@@ -106,7 +106,7 @@ $style = array(
         )
     );
 
-    $sheet->getStyle('A'.(collect($data)->count()+4).':I'.(collect($data)->count()+8))->applyFromArray($style);
+    $sheet->getStyle('A'.(collect($data)->count()+4).':I'.(collect($data)->count()+10))->applyFromArray($style);
 
 
                 if($type=='pdf'){

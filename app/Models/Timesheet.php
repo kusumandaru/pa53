@@ -546,7 +546,7 @@ class Timesheet extends Model
             $project = DB::table('projects')->where('id', $project_id)->first();
             $user = User::where('id','=',$a->user_id)->first();
             $total =  Timesheet::getTotalTimesheetValueByProjectsAndPeriod($a->ts_id,$project_id,$a->user_id);
-           // if($a->w == 2 && $total > 0){
+            if($total > 0){
                 $data[] = array(
                                 'period' => Timesheet::getPeriod($a->periode,$a->month,$a->year),
                                 'project_name'=>$project->project_name,
@@ -560,7 +560,7 @@ class Timesheet extends Model
                                 'total' => $total
                 
                 );
-           // }
+           }
         }
 
         return $data;

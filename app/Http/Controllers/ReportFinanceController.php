@@ -17,7 +17,7 @@ use Yajra\Datatables\Facades\Datatables;
 use PHPExcel_Worksheet_PageSetup;
 use PHPExcel_Style_Border;
 use PHPExcel_Style_Color;
-
+use PHPExcel_Style_Alignment;
 
 
 class ReportFinanceController extends Controller
@@ -72,7 +72,7 @@ class ReportFinanceController extends Controller
     private function download($project_id,$period,$type) {
         $project = DB::table('projects')->where('id', $project_id)->first();
         $pm = DB::table('users')->where('id', $project->pm_user_id)->first();
-        $pmo = DB::select(DB::raw('select users.name from approval_histories join users ON users.id = approval_histories.approval_id where approval_histories.sequence_id=1 and approval_histories.transaction_type=2 and approval_status=1 and approval_histories.transaction_id in ( select timesheet_details.id from timesheet_details where project_id = '.$project_id.') AND users.deleted_at IS NULL ORDER BY approval_id LIMIT 1'))[0]->name;
+        $pmo = 'Oky Gustiawan';
         $data = Timesheet::getFinanceSummary($project_id,$period);
         Excel::create($project->project_name, function($excel) use($data,$project,$pm,$pmo,$type) {
 
@@ -82,13 +82,33 @@ class ReportFinanceController extends Controller
                 ));
                 $sheet->fromModel($data, null, 'A1', true);
                 $sheet->appendRow(array('','','','','','','','Subtotal', collect($data)->sum('total')));
-                $sheet->appendRow(array('','PM','','','PMO','','','',''));
-                $sheet->appendRow(array('','Approved','','','Approved','','','',''));
+                $sheet->appendRow(array('','','','','','','','',''));
+                $sheet->appendRow(array('','','PM','PMO','','','','',''));
+                $sheet->appendRow(array('','','Approved','Approved','','','','',''));
                 $sheet->appendRow(array('','','','','','','','',''));
                 $sheet->appendRow(array('','','','','','','','',''));
                 $sheet->appendRow(array('','','','','','','','',''));
-                $sheet->appendRow(array('',date('d-m-Y'),'','',date('d-m-Y'),'','','',''));
-                $sheet->appendRow(array('',$pm->name,'','',$pmo,'','','',''));
+                $sheet->appendRow(array('','',date('d-m-Y H:i'),date('d-m-Y H:i'),'','','','',''));
+                $sheet->appendRow(array('','',$pm->name,$pmo,'','','','',''));
+                $styleArray = array(
+                        'borders' => array(
+                            'allborders' => array(
+                                //'style' => PHPExcel_Style_Border::BORDER_NONE,
+                                'color' => array('rgb' => PHPExcel_Style_Color::COLOR_WHITE)
+                            ),
+                        )
+                    );
+
+$sheet->setBorder('A1:I'.(collect($data)->count()+2));
+$style = array(
+        'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+        )
+    );
+
+    $sheet->getStyle("C5:D11")->applyFromArray($style);
+
+
                 if($type=='pdf'){
 
                     /**

@@ -690,9 +690,10 @@ class Add_Timesheet extends Controller
 
     public function getColumns()
     {
+        return collect(Timesheet::getFinanceSummary(21,1))->count();
        //getFinanceSummary($user_id, $project_id)
       // return response()->json($timesheet = Timesheet::where('id', '=', 231)->first());
-       return DB::select(DB::raw('select users.name from approval_histories join users ON users.id = approval_histories.approval_id where approval_histories.sequence_id=1 and approval_histories.transaction_type=2 and approval_status=1 and approval_histories.transaction_id in ( select timesheet_details.id from timesheet_details where project_id = 11) AND users.deleted_at IS NULL ORDER BY approval_id LIMIT 1'))[0]->name;
+       return DB::select(DB::raw('select users.name from approval_histories join users ON users.id = approval_histories.approval_id where approval_histories.sequence_id=1 and approval_histories.transaction_type=2 and approval_status=1 and approval_histories.transaction_id in ( select timesheet_details.id from timesheet_details where project_id = 11) AND users.deleted_at IS NULL ORDER BY approval_id LIMIT 1'));
        return response()->json(DB::table('projects')->where('id', 1)->first());
        return $user = DB::table('users')
             ->where('id', $userId)

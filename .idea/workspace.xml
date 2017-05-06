@@ -45,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportFinanceController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="361">
-              <caret line="118" column="95" lean-forward="false" selection-start-line="118" selection-start-column="95" selection-end-line="118" selection-end-column="95" />
+              <caret line="118" column="89" lean-forward="false" selection-start-line="118" selection-start-column="89" selection-end-line="118" selection-end-column="89" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
@@ -579,7 +579,7 @@
       <workItem from="1492437378563" duration="5998000" />
       <workItem from="1492570594932" duration="4362000" />
       <workItem from="1493431054676" duration="9278000" />
-      <workItem from="1493912976136" duration="15298000" />
+      <workItem from="1493912976136" duration="15420000" />
     </task>
     <task id="LOCAL-00001" summary="rename to PA Metrasys">
       <created>1476512413193</created>
@@ -753,7 +753,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="439989000" />
+    <option name="totallyTimeSpent" value="440111000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1285,7 +1285,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportFinanceController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
-          <caret line="118" column="95" lean-forward="false" selection-start-line="118" selection-start-column="95" selection-end-line="118" selection-end-column="95" />
+          <caret line="118" column="89" lean-forward="false" selection-start-line="118" selection-start-column="89" selection-end-line="118" selection-end-column="89" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>

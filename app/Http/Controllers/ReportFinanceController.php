@@ -90,51 +90,35 @@ class ReportFinanceController extends Controller
                 $sheet->appendRow(array('','','','','','','','',''));
                 $sheet->appendRow(array('','',date('d-m-Y H:i'),date('d-m-Y H:i'),'','','','',''));
                 $sheet->appendRow(array('','',$pm->name,$pmo,'','','','',''));
+
+
                 $styleArray = array(
-                        'borders' => array(
-                            'allborders' => array(
-                                //'style' => PHPExcel_Style_Border::BORDER_NONE,
-                                'color' => array('rgb' => PHPExcel_Style_Color::COLOR_WHITE)
-                            ),
-                        )
-                    );
+                    'borders' => array(
+                        'allborders' => array(
+                            //'style' => PHPExcel_Style_Border::BORDER_NONE,
+                            'color' => array('rgb' => PHPExcel_Style_Color::COLOR_WHITE)
+                        ),
+                    )
+                );
 
-$sheet->setBorder('A1:I'.(collect($data)->count()+2));
-$style = array(
-        'alignment' => array(
-            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-        )
-    );
+                $sheet->setBorder('A1:I'.(collect($data)->count()+2));
+                $style = array(
+                    'alignment' => array(
+                        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+                    )
+                );
 
-    $sheet->getStyle('A'.(collect($data)->count()+4).':I'.(collect($data)->count()+10))->applyFromArray($style);
+                $sheet->getStyle('A'.(collect($data)->count()+4).':I'.(collect($data)->count()+10))->applyFromArray($style);
 
 
                 if($type=='pdf'){
+                    
 
-                    /**
-                    $styleArray = array(
-                        'borders' => array(
-                            'allborders' => array(
-                                //'style' => PHPExcel_Style_Border::BORDER_NONE,
-                                'color' => array('rgb' => PHPExcel_Style_Color::COLOR_WHITE)
-                            ),
-                        )
-                    );
-
-
-
-                    $sheet->getStyle('A1:B5')->applyFromArray($styleArray);
-                    $sheet->cells('A1:B5', function($cell) {
-                        $cell->setBorder('none', 'none', 'none', 'none');
-                        $cell->setBackground('#FFFFFF');
-
-                    });
-
-                    $sheet->setAllBorders('none');
-                    **/
-
+                    //$sheet->setAllBorders('none');
                     $sheet->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
-                    $sheet->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_ISO_B4);
+                    $sheet->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A3);
+
+                    $sheet->setBorder('A1:I'.(collect($data)->count()+10), 'none');
                 }
             });
             set_time_limit(0);

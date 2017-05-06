@@ -112,11 +112,11 @@ class ReportFinanceController extends Controller
 
 
                 if($type=='pdf'){
-                    
+
 
                     //$sheet->setAllBorders('none');
                     $sheet->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
-                    $sheet->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A3);
+                    $sheet->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A3_EXTRA_PAPER);
 
                     $sheet->setBorder('A1:I'.(collect($data)->count()+10), 'none');
                 }

@@ -545,6 +545,7 @@ class Timesheet extends Model
         foreach ($array as $a ){
             $project = DB::table('projects')->where('id', $project_id)->first();
             $user = User::where('id','=',$a->user_id)->first();
+            $position = Position::where('id','=',$user->position)->first()->name;;
             $total =  Timesheet::getTotalTimesheetValueByProjectsAndPeriod($a->ts_id,$project_id,$a->user_id);
             if($total > 0){
                 $data[] = array(
@@ -552,10 +553,14 @@ class Timesheet extends Model
                                 'project_name'=>$project->project_name,
                                 'iwo_wbs_code'=>$project->code,
                                 'nama_konsultan'=>$user->name,
+                                'position'=>$position,
                                 'nama_bank'=>$user->bank,
                                 'cabang_bank'=>$user->cabang,
                                 'nama_rekening'=>$user->nama_rekening,
                                 'no_rekening'=>$user->rekening,
+                                //'rate_consultant'=>'',
+                                'jumlah_hari'=> Timesheet::getTotalTimesheetDays($a->ts_id,$project_id),
+                                'total_claim_transportz' => Timesheet::getTotalTransportByProject($a->ts_id,$project_id),
                                // 'status'=> 'not validated',
                                 'total' => $total
                 
@@ -603,6 +608,18 @@ class Timesheet extends Model
             ->pluck('timesheet_insentif.value')->sum();
 
         return $transport;
+    }
+
+     public static function getTotalTimesheetDays($timesheet_list,$project_id)
+    {
+        $insentif = 0;
+
+        $mandays = DB::select(DB::raw("SELECT lokasi , count(*)total FROM `timesheet_details` 
+        JOIN timesheets ON timesheets.id = timesheet_details.timesheet_id
+        where timesheets.id in (".$timesheet_list.")
+        and timesheet_details.project_id = ".$project_id."
+        and selected = 1 group by lokasi"));
+        return $mandays[0]->total;
     }
 
      public static function getTotalMandaysByProject($timesheet_list,$project_id,$userId)

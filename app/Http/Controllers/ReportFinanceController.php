@@ -78,7 +78,10 @@ class ReportFinanceController extends Controller
 
             $excel->sheet('sheet', function($sheet) use($data,$pm,$pmo,$type) {
                 $sheet->setColumnFormat(array(
-                    'I' => '###,###,###,##0.00'
+                    'L' => '###,###,###,##0.00'
+                ));
+                 $sheet->setColumnFormat(array(
+                    'K' => '###,###,###,##0.00'
                 ));
                 $sheet->fromModel($data, null, 'A1', true);
                 $sheet->appendRow(array('','','','','','','','Subtotal', collect($data)->sum('total')));
@@ -101,14 +104,14 @@ class ReportFinanceController extends Controller
                     )
                 );
 
-                $sheet->setBorder('A1:I'.(collect($data)->count()+2));
+                $sheet->setBorder('A1:L'.(collect($data)->count()+2));
                 $style = array(
                     'alignment' => array(
                         'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
                     )
                 );
 
-                $sheet->getStyle('A'.(collect($data)->count()+4).':I'.(collect($data)->count()+10))->applyFromArray($style);
+                $sheet->getStyle('A'.(collect($data)->count()+4).':L'.(collect($data)->count()+10))->applyFromArray($style);
 
 
                 if($type=='pdf'){

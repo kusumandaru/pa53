@@ -18,6 +18,7 @@ use PHPExcel_Worksheet_PageSetup;
 use PHPExcel_Style_Border;
 use PHPExcel_Style_Color;
 use PHPExcel_Style_Alignment;
+use PHPExcel_Cell;
 
 
 class ReportFinanceController extends Controller
@@ -74,6 +75,9 @@ class ReportFinanceController extends Controller
         $pm = DB::table('users')->where('id', $project->pm_user_id)->first();
         $pmo = 'Oky Gustiawan';
         $data = Timesheet::getFinanceSummary($project_id,$period);
+
+
+
         Excel::create($project->project_name, function($excel) use($data,$project,$pm,$pmo,$type) {
 
             $excel->sheet('sheet', function($sheet) use($data,$pm,$pmo,$type) {
@@ -115,18 +119,53 @@ class ReportFinanceController extends Controller
 
 
                 if($type=='pdf'){
-
-
-                    //$sheet->setAllBorders('none');
                     $sheet->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
-                    $sheet->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A2_PAPER);
+                    $sheet->setFitToPage(true);
+
+                    $widths = $sheet->calculateWorksheetDimension();
+                    $sheet->setPrintArea($widths);
 
                     $sheet->setBorder('A1:I'.(collect($data)->count()+10), 'none');
+
+                    $widthCount = $this->getMaxColumnWidthCharacter($data);
+                    if($widthCount < 110) {
+                        $sheet->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+                    }
+                    elseif ($widthCount >= 110 && $widthCount <= 200) {
+                        $sheet->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A3);
+                    }
+                    elseif($widthCount > 200) {
+                        $sheet->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A2_PAPER);
+                    }
+
                 }
             });
             set_time_limit(0);
             ini_set('memory_limit', '1G');
             ob_end_clean();
         })->export($type);
+    }
+
+    private function getMaxColumnWidthCharacter($projects)
+    {
+        $maxWidthCharacter = 0;
+        foreach ($projects as $project){
+            $characterCount = 0;
+            $characterCount += strlen($project['period']);
+            $characterCount += strlen($project['project_name']);
+            $characterCount += strlen($project['iwo_wbs_code']);
+            $characterCount += strlen($project['nama_konsultan']);
+            $characterCount += strlen($project['nama_bank']);
+            $characterCount += strlen($project['cabang_bank']);
+            $characterCount += strlen($project['nama_rekening']);
+            $characterCount += strlen($project['no_rekening']);
+            $characterCount += strlen($project['total']);
+
+            if($characterCount > $maxWidthCharacter) {
+                $maxWidthCharacter = $characterCount;
+            }
+        }
+
+        return $maxWidthCharacter;
     }
 }

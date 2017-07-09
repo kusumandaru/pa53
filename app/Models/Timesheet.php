@@ -632,12 +632,15 @@ class Timesheet extends Model
         and timesheet_details.project_id = ".$project_id."
         and selected = 1 group by lokasi"));
 
+     //   print_r ($mandays).'<br>';echo '<br>';
+
         $tunjangans = DB::select(DB::raw('SELECT positions.name,tunjangans.name,lokal,non_lokal,luar_jawa,internasional 
                       FROM tunjangan_positions,tunjangans,positions,users 
                       WHERE tunjangans.name != "Bantuan Perumahan"
                       and tunjangan_positions.tunjangan_id = tunjangans.id 
                       and tunjangan_positions.position_id = positions.id 
                       and users.position = positions.id and users.id = ' . $userId));
+       // print_r ($tunjangans);echo '<br>';
 
         foreach ($tunjangans as $t) {
             $arr['lokal'][$t->name] = $t->lokal;
@@ -645,6 +648,7 @@ class Timesheet extends Model
             $arr['luar_jawa'][$t->name] = $t->luar_jawa;
             $arr['internasional'][$t->name] = $t->internasional;
         }
+      //  print_r ($arr);echo '<br>';
 
         foreach ($mandays as $m)
         {
@@ -653,6 +657,7 @@ class Timesheet extends Model
                     if ($arr['lokal'] != null) {
                         foreach ($arr['lokal'] as $key => $value) {
                             $insentif += $value * $m->total;
+                          //  echo $insentif.'JABODETABEK<br>';
                         }
                     }
                 }
@@ -662,14 +667,16 @@ class Timesheet extends Model
                     if ($arr['luar_jawa'] != null) {
                         foreach ($arr['luar_jawa'] as $key => $value) {
                             $insentif += $value * $m->total;
+                           //  echo $insentif.'LUARJAWA<br>';
                         }
                     }
                 }
-            } else if ($m->lokasi === "DOMESTIK P. JAWA") {
+            } else if ($m->lokasi === "JAWA") {
                 if (!empty ($arr)) {
                     if ($arr['non_lokal'] != null) {
                         foreach ($arr['non_lokal'] as $key => $value) {
                             $insentif += $value * $m->total;
+                  //           echo $insentif.'DOMESTIK P. JAWA<br>';
                         }
                     }
                 }
@@ -678,6 +685,7 @@ class Timesheet extends Model
                     if ($arr['internasional'] != null) {
                         foreach ($arr['internasional'] as $key => $value) {
                             $insentif += $value * $m->total;
+                    //         echo $insentif.'INTERNATIONAL<br>';
                         }
                     }
                 }

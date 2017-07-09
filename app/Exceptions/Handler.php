@@ -51,12 +51,17 @@ class Handler extends ExceptionHandler
             return response()->view('errors.custom', ['title'=>'Not Authorized please login again','url'=>$url], 500);
         }
 
-        if($exception instanceof \Illuminate\Database\QueryException){
-             $url = URL::to('/');
-            return response()->view('errors.custom', ['title'=>'Kesalahan','url'=>$url], 500);
-        
-    // send your custom error message here
-}
+        if(env('CUSTOM_DEBUG', true))
+        {
+            if($exception instanceof \Illuminate\Database\QueryException){
+                $url = URL::to('/');
+                return response()->view('errors.custom', ['title'=>'Kesalahan','url'=>$url], 500);
+
+                // send your custom error message here
+            }
+        }
+
+
 
         return parent::render($request, $exception);
     }

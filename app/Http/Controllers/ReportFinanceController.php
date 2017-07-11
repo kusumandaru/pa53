@@ -87,6 +87,9 @@ class ReportFinanceController extends Controller
                  $sheet->setColumnFormat(array(
                     'K' => '###,###,###,##0.00'
                 ));
+                 $sheet->setColumnFormat(array(
+                    'i' => '@'
+                ));
                 $sheet->fromModel($data, null, 'A1', true);
                 $sheet->appendRow(array('','','','','','','','Subtotal', collect($data)->sum('total')));
                 $sheet->appendRow(array('','','','','','','','',''));

@@ -619,7 +619,12 @@ class Timesheet extends Model
         where timesheets.id in (".$timesheet_list.")
         and timesheet_details.project_id = ".$project_id."
         and selected = 1 group by lokasi"));
-        return $mandays[0]->total;
+        $ttl = 0 ;
+
+        foreach ($mandays as $m){
+            $ttl += $m->total;
+        }
+        return $ttl;
     }
 
      public static function getTotalMandaysByProject($timesheet_list,$project_id,$userId)
@@ -632,7 +637,7 @@ class Timesheet extends Model
         and timesheet_details.project_id = ".$project_id."
         and selected = 1 group by lokasi"));
 
-     //   print_r ($mandays).'<br>';echo '<br>';
+        //print_r ($mandays).'<br>';echo '<br>';
 
         $tunjangans = DB::select(DB::raw('SELECT positions.name,tunjangans.name,lokal,non_lokal,luar_jawa,internasional 
                       FROM tunjangan_positions,tunjangans,positions,users 

@@ -590,6 +590,12 @@ class Timesheet extends Model
         $list = explode(',', $timesheet_list);
         $transport = DB::table('timesheet_transport')
             ->join('timesheets', 'timesheet_transport.timesheet_id', 'timesheets.id')
+
+            ->join('approval_histories', 'approval_histories.guid', 'timesheet_transport.guid')
+            ->where('approval_histories.approval_status', '=', 1)
+            ->where('approval_histories.sequence_id', '=', 1)
+            ->where('transaction_type', '=', 3)//adcost
+
             ->where('timesheet_transport.project_id', '=', $project_id)//adcost
             ->whereIn('timesheets.id', $list)
             ->pluck('timesheet_transport.value')->sum();
@@ -603,7 +609,13 @@ class Timesheet extends Model
         $list = explode(',', $timesheet_list);
         $transport = DB::table('timesheet_insentif')
             ->join('timesheets', 'timesheet_insentif.timesheet_id', 'timesheets.id')
-            ->where('timesheet_insentif.project_id', '=', $project_id)//adcost
+
+            ->join('approval_histories', 'approval_histories.guid', 'timesheet_insentif.guid')
+            ->where('approval_histories.approval_status', '=', 1)
+            ->where('approval_histories.sequence_id', '=', 1)
+            ->where('transaction_type', '=', 4)//bantuan perumahan
+
+            ->where('timesheet_insentif.project_id', '=', $project_id)//bantuan perumahan
             ->whereIn('timesheets.id', $list)
             ->pluck('timesheet_insentif.value')->sum();
 
@@ -614,9 +626,13 @@ class Timesheet extends Model
     {
         $insentif = 0;
 
-        $mandays = DB::select(DB::raw("SELECT lokasi , count(*)total FROM `timesheet_details` 
+        $mandays = DB::select(DB::raw("SELECT timesheet_details.lokasi , count(*)total FROM `timesheet_details` 
         JOIN timesheets ON timesheets.id = timesheet_details.timesheet_id
-        where timesheets.id in (".$timesheet_list.")
+        JOIN approval_histories ah1 ON timesheet_details.id = ah1.transaction_id
+        WHERE ah1.transaction_type = 2
+        and ah1.sequence_id = 1
+        and ah1.approval_status = 1
+        and timesheets.id in (".$timesheet_list.")
         and timesheet_details.project_id = ".$project_id."
         and selected = 1 group by lokasi"));
         $ttl = 0 ;
@@ -631,9 +647,13 @@ class Timesheet extends Model
     {
         $insentif = 0;
 
-        $mandays = DB::select(DB::raw("SELECT lokasi , count(*)total FROM `timesheet_details` 
+        $mandays = DB::select(DB::raw("SELECT timesheet_details.lokasi , count(*)total FROM `timesheet_details` 
         JOIN timesheets ON timesheets.id = timesheet_details.timesheet_id
-        where timesheets.id in (".$timesheet_list.")
+        JOIN approval_histories ah1 ON timesheet_details.id = ah1.transaction_id
+        WHERE ah1.transaction_type = 2
+        and ah1.sequence_id = 1
+        and ah1.approval_status = 1
+        and timesheets.id in (".$timesheet_list.")
         and timesheet_details.project_id = ".$project_id."
         and selected = 1 group by lokasi"));
 

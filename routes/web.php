@@ -169,12 +169,25 @@ Route::resource('timesheetInsentifs', 'TimesheetInsentifController');
 Route::get('report/timesheet', array('uses' => 'ReportController@timesheet',
     'as' => 'report.timesheet'));
 
-    Route::get('report/mapping', array('uses' => 'ReportMappingController@index',
+Route::get('report/mapping', array('uses' => 'ReportMappingController@index',
     'as' => 'report.mapping'));
+
+Route::get('report/finance', array('uses' => 'ReportFinanceController@index',
+    'as' => 'report.finance'));
+
+Route::get('project_member/{id}', array('uses' => 'ReportFinanceController@getProjectMemberJson',
+'as' => 'project_member'));
+
+Route::get('report/finance/download/{project_id}/{period}', array('uses' => 'ReportFinanceController@getExcel',
+'as' => 'report.finance.download'));
+
+Route::get('report/finance/downloadpdf/{project_id}/{period}', array('uses' => 'ReportFinanceController@getPdf',
+    'as' => 'report.finance.downloadpdf'));
+
 
 Route::get('/panduan', function () {
     return view('users.download');
-});
+})->name('panduan');
 
 // Route::post('uploadimo', array('uses' => 'ImoController@postUploadFile',
 // 'as' => 'uploadimo'));

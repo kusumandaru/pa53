@@ -7,11 +7,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/Models/Leave.php" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dd7a13a-f1b8-452f-940f-5fa9045cf6b8" name="Default" comment="add audit and separate leave from admin and non admin user">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Services/IsProjectManagerService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" />
-    </list>
+    <list default="true" id="3dd7a13a-f1b8-452f-940f-5fa9045cf6b8" name="Default" comment="add audit and separate leave from admin and non admin user" />
     <ignored path="pa53.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -43,31 +39,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="menu.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/menu.blade.php">
+      <file leaf-file-name="ReportFinanceController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportFinanceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="183" column="20" lean-forward="false" selection-start-line="183" selection-start-column="20" selection-end-line="183" selection-end-column="20" />
+            <state relative-caret-position="330">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Timesheet.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Models/Timesheet.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="639" column="0" lean-forward="true" selection-start-line="639" selection-start-column="0" selection-end-line="639" selection-end-column="0" />
+              <folding>
+                <marker date="1500815709000" expanded="true" signature="5120:5582" ph="select count... approval_histories" />
+                <marker date="1500815709000" expanded="true" signature="6131:6527" ph="select count... approval_histories" />
+                <marker date="1500815709000" expanded="true" signature="7847:8500" ph="SELECT lokas... timesheet_details" />
+                <marker date="1500815709000" expanded="true" signature="8548:8990" ph="SELECT posit... tunjangan_positions" />
+                <marker date="1500815709000" expanded="true" signature="10895:11484" ph="SELECT lokas... timesheet_details" />
+                <marker date="1500815709000" expanded="true" signature="11532:11974" ph="SELECT posit... tunjangan_positions" />
+                <marker date="1500815709000" expanded="true" signature="17357:17442" ph="SELECT * FRO... timesheet_details" />
+                <marker date="1500815709000" expanded="true" signature="18086:18443" ph="select appro... approval_histories" />
+                <marker date="1500815709000" expanded="true" signature="21747:22065" ph="select * fro... count" />
+                <marker date="1500815709000" expanded="true" signature="21763:22044" ph="SELECT count... " />
+                <marker date="1500815709000" expanded="true" signature="23711:23880" ph="select * fro... count" />
+                <marker date="1500815709000" expanded="true" signature="23726:23872" ph="SELECT count... timesheets" />
+                <marker date="1500815709000" expanded="true" signature="25865:26351" ph="SELECT lokas... timesheet_details" />
+                <marker date="1500815709000" expanded="true" signature="26557:27043" ph="SELECT lokas... timesheet_details" />
+                <marker date="1500815709000" expanded="true" signature="27141:27583" ph="SELECT posit... tunjangan_positions" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IsProjectManagerService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Services/IsProjectManagerService.php">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LeaveCountService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Services/LeaveCountService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="2625">
+              <caret line="184" column="39" lean-forward="false" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -84,36 +108,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>isApprovalHistoryWithGuidExist</find>
-      <find>updateApprovalHistoryWithGuid</find>
-      <find>onholdTimesheetDetail</find>
-      <find>Flash</find>
-      <find>Flasg</find>
-      <find>timesheet</find>
-      <find>'.$row.'</find>
-      <find>$req</find>
-      <find>redirect</find>
-      <find>createFromLeave</find>
-      <find>getApprover</find>
-      <find>approve</find>
-      <find>getCC</find>
-      <find>getHRD</find>
-      <find>compan</find>
-      <find>DBLL</find>
-      <find>times</find>
-      <find>Select</find>
-      <find>selec</find>
-      <find>select</find>
-      <find>status</find>
-      <find>approvalSt</find>
-      <find>TimesheetReportDataTable</find>
-      <find>input-group-btn</find>
-      <find>input-group</find>
-      <find>pluc</find>
-      <find>toDateTimeString</find>
-      <find>Barry</find>
-      <find>DB</find>
-      <find>count</find>
+      <find>User</find>
+      <find>all()</find>
+      <find>foreach</find>
+      <find>sendProjectMemberEmail</find>
+      <find>sendNewProjectMemberEmail</find>
+      <find>FIT</find>
+      <find>_fitToWidth</find>
+      <find>itToWidth</find>
+      <find>_render</find>
+      <find>setPdfRenderer</find>
+      <find>export.pdf.driver</find>
+      <find>fitToPage</find>
+      <find>set</find>
+      <find>setBorder</find>
+      <find>SetBorder</find>
+      <find>PHPOffice_PHPExcel</find>
+      <find>default</find>
+      <find>$this</find>
+      <find>$styleArray</find>
+      <find>fitT</find>
+      <find>setup</find>
+      <find>getMaxColumnWidthCharacter</find>
+      <find>Kesalahan</find>
+      <find>single</find>
+      <find>getTotalTimesheetValueByProjectsAndPeriod</find>
+      <find>approval_histor</find>
+      <find>getTotalMandaysTimesheet</find>
+      <find>getTotalMandaysByProject</find>
+      <find>getTotalTimesheetDays</find>
+      <find>getTotalTransportByProject</find>
     </findStrings>
     <replaceStrings>
       <replace>this.textContent</replace>
@@ -122,6 +146,7 @@
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/resources</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="FrameworkCommandLineHistory">
@@ -159,57 +184,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Services/MenuCountService.php" />
-        <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
-        <option value="$PROJECT_DIR$/resources/views/errors/custom.blade.php" />
-        <option value="$PROJECT_DIR$/app/DataTables/TimesheetDataTable.php" />
-        <option value="$PROJECT_DIR$/resources/views/projects/create.blade.php" />
-        <option value="$PROJECT_DIR$/app/DataTables/AccessModuleDataTable.php" />
-        <option value="$PROJECT_DIR$/app/DataTables/ApprovalHistoryDataTable.php" />
-        <option value="$PROJECT_DIR$/app/DataTables/AuditDataTable.php" />
-        <option value="$PROJECT_DIR$/app/DataTables/ConstantDataTable.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2017_01_02_01190_update_approval_histories_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2017_01_06_01190_update_decimal_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TunjanganPositionController.php" />
-        <option value="$PROJECT_DIR$/app/Models/Holiday.php" />
-        <option value="$PROJECT_DIR$/app/Models/Leave.php" />
-        <option value="$PROJECT_DIR$/app/Models/UserLeave.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/app/DataTables/ProjectDataTable.php" />
-        <option value="$PROJECT_DIR$/app/DataTables/TunjanganPositionDataTable.php" />
-        <option value="$PROJECT_DIR$/app/Services/TimesheetCountService.php" />
         <option value="$PROJECT_DIR$/resources/views/timesheets/moderation_datatables_actions.blade.php" />
-        <option value="$PROJECT_DIR$/app/DataTables/ModerationTimesheetDataTable.php" />
         <option value="$PROJECT_DIR$/database/migrations/2017_01_29_092046_add_guid_col_approval.php" />
         <option value="$PROJECT_DIR$/app/Models/ApprovalHistory.php" />
         <option value="$PROJECT_DIR$/app/Models/TimesheetTransport.php" />
         <option value="$PROJECT_DIR$/app/Models/TimesheetInsentif.php" />
         <option value="$PROJECT_DIR$/resources/views/timesheets/moderation.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TimesheetApprovalController.php" />
-        <option value="$PROJECT_DIR$/resources/views/timesheets/moderate_fields.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/timesheets/add_timesheet.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Add_Timesheet.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/Mail/LeaveSubmission.php" />
         <option value="$PROJECT_DIR$/resources/views/email/leave/submission.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LeaveController.php" />
-        <option value="$PROJECT_DIR$/config/excel.php" />
         <option value="$PROJECT_DIR$/resources/views/email/timesheet/submission.blade.php" />
         <option value="$PROJECT_DIR$/app/Mail/TimesheetSubmission.php" />
         <option value="$PROJECT_DIR$/database/migrations/2017_02_15_092046_add_created_at_default_value.php" />
         <option value="$PROJECT_DIR$/app/Models/TimesheetDetail.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/timesheet.blade.php" />
-        <option value="$PROJECT_DIR$/app/Models/Timesheet.php" />
         <option value="$PROJECT_DIR$/app/DataTables/TimesheetReportDataTable.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/SendTimesheetReportEmail.php" />
-        <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
-        <option value="$PROJECT_DIR$/app/Console/Commands/SendTimesheetHRReportEmail.php" />
-        <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/app/Console/Commands/SendTimesheetFinanceReportEmail.php" />
         <option value="$PROJECT_DIR$/app/Services/IsProjectManagerService.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/users/fields.blade.php" />
+        <option value="$PROJECT_DIR$/app/Services/DateService.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/PMOMiddleware.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/AdminMiddleware.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Add_Timesheet.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2017_01_06_01190_update_decimal_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2017_03_13_01190_update_timestamp_to_datetime.php" />
+        <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
+        <option value="$PROJECT_DIR$/app/Console/Commands/SendTimesheetHRReportEmail.php" />
+        <option value="$PROJECT_DIR$/app/Console/Commands/SendTimesheetFinanceReportEmail.php" />
+        <option value="$PROJECT_DIR$/resources/views/timesheets/add_timesheet.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/timesheets/edit_timesheet.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TimesheetApprovalController.php" />
+        <option value="$PROJECT_DIR$/app/DataTables/ModerationTimesheetDataTable.php" />
+        <option value="$PROJECT_DIR$/config/queue.php" />
+        <option value="$PROJECT_DIR$/resources/views/timesheets/moderate_fields.blade.php" />
+        <option value="$PROJECT_DIR$/app/Jobs/SendProjectMemberAssignEmail.php" />
+        <option value="$PROJECT_DIR$/resources/views/email/project/assignmember.blade.php" />
+        <option value="$PROJECT_DIR$/app/Mail/ProjectMemberAssign.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/reports/finance.blade.php" />
+        <option value="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Writers/CellWriter.php" />
+        <option value="$PROJECT_DIR$/vendor/mpdf/mpdf/mpdf.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/config/excel.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ReportFinanceController.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/Models/Timesheet.php" />
       </list>
     </option>
   </component>
@@ -327,11 +352,11 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/class-loader" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
-      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/vendor/tecnick.com/tcpdf" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
@@ -356,7 +381,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -379,6 +404,38 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pa53" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pa53" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pa53" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pa53" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -397,13 +454,13 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
+              <option name="myItemId" value="Models" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -421,11 +478,11 @@
       <recent name="C:\xampp\htdocs\pa53\app\Http\Controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Services" />
-      <recent name="$PROJECT_DIR$/app/Console/Commands" />
-      <recent name="$PROJECT_DIR$/resources/views/reports" />
+      <recent name="$PROJECT_DIR$/public/image" />
+      <recent name="$PROJECT_DIR$/resources/views/email/project" />
+      <recent name="$PROJECT_DIR$/app/Mail" />
       <recent name="$PROJECT_DIR$/database/migrations" />
-      <recent name="$PROJECT_DIR$/resources/views/errors" />
+      <recent name="$PROJECT_DIR$/app/Services" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.select.js">
@@ -576,6 +633,28 @@
       <workItem from="1487507048409" duration="11276000" />
       <workItem from="1488042519280" duration="314000" />
       <workItem from="1488042881554" duration="4196000" />
+      <workItem from="1488240204133" duration="11248000" />
+      <workItem from="1488499596130" duration="1742000" />
+      <workItem from="1488633712116" duration="1595000" />
+      <workItem from="1488721921484" duration="989000" />
+      <workItem from="1489068459513" duration="3168000" />
+      <workItem from="1489312695279" duration="325000" />
+      <workItem from="1489410885697" duration="12759000" />
+      <workItem from="1489897146807" duration="3311000" />
+      <workItem from="1490408583433" duration="313000" />
+      <workItem from="1490809894018" duration="1702000" />
+      <workItem from="1491230320024" duration="85000" />
+      <workItem from="1491926607059" duration="1692000" />
+      <workItem from="1492437378563" duration="5998000" />
+      <workItem from="1492570594932" duration="4362000" />
+      <workItem from="1493431054676" duration="9278000" />
+      <workItem from="1493912976136" duration="15480000" />
+      <workItem from="1496667868998" duration="4296000" />
+      <workItem from="1499600177025" duration="1553000" />
+      <workItem from="1500480151855" duration="1640000" />
+      <workItem from="1500510299260" duration="353000" />
+      <workItem from="1500799679868" duration="2878000" />
+      <workItem from="1500815172290" duration="421000" />
     </task>
     <task id="LOCAL-00001" summary="rename to PA Metrasys">
       <created>1476512413193</created>
@@ -749,7 +828,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366124000" />
+    <option name="totallyTimeSpent" value="451312000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -765,27 +844,27 @@
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31374106" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30859375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3078078" sideWeight="0.55859375" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3260274" sideWeight="0.49707174" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.49707174" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33013698" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3173971" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27945206" sideWeight="0.44140625" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3520548" sideWeight="0.43704244" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882884" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3260274" sideWeight="0.4359375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31129476" sideWeight="0.4359375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28950864" sideWeight="0.44140625" order="4" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -852,6 +931,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php</url>
+          <line>247</line>
+          <option name="timeStamp" value="411" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog>
           <selected-grouping-rules>
@@ -859,7 +945,7 @@
           </selected-grouping-rules>
         </breakpoints-dialog>
       </breakpoints-dialog>
-      <option name="time" value="350" />
+      <option name="time" value="451" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -870,161 +956,108 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/timesheets/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="1019" column="0" lean-forward="false" selection-start-line="1019" selection-start-column="0" selection-end-line="1019" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/timesheets/add_timesheet.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1223">
-          <caret line="152" column="123" lean-forward="false" selection-start-line="152" selection-start-column="115" selection-end-line="152" selection-end-column="123" />
+        <state relative-caret-position="3345">
+          <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Collection.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/timesheets/edit_timesheet.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="474" column="171" lean-forward="false" selection-start-line="474" selection-start-column="171" selection-end-line="474" selection-end-column="171" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Add_Timesheet.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="272" column="73" lean-forward="false" selection-start-line="272" selection-start-column="73" selection-end-line="272" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/framework/views/e49b8740e87f95dddf67bf2aeee7f2580815f6cf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5385">
-          <caret line="359" column="66" lean-forward="false" selection-start-line="358" selection-start-column="61" selection-end-line="358" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Mail/LeaveSubmission.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="49" column="36" lean-forward="false" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4005">
-          <caret line="279" column="0" lean-forward="false" selection-start-line="279" selection-start-column="0" selection-end-line="279" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/excel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="68" column="56" lean-forward="false" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Mail/TimesheetSubmission.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="44" column="32" lean-forward="false" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/email/timesheet/submission.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="359" column="79" lean-forward="false" selection-start-line="359" selection-start-column="79" selection-end-line="359" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LeaveController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7830">
-          <caret line="543" column="65" lean-forward="false" selection-start-line="543" selection-start-column="65" selection-end-line="543" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2017_02_15_092046_add_created_at_default_value.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TimesheetController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1545">
-          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/TimesheetDetail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4050">
-          <caret line="274" column="29" lean-forward="false" selection-start-line="274" selection-start-column="21" selection-end-line="274" selection-end-column="29" />
-          <folding>
-            <marker date="1487137281000" expanded="true" signature="3911:4105" ph="select DATE_... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
+    <entry file="file://$PROJECT_DIR$/app/DataTables/TimesheetReportDataTable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/console.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/timesheets/moderation.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/email/leave/submission.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="358" column="60" lean-forward="false" selection-start-line="358" selection-start-column="60" selection-end-line="358" selection-end-column="60" />
+        <state relative-caret-position="-10">
+          <caret line="140" column="14" lean-forward="false" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/email/leave/notification.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/menu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="350" column="0" lean-forward="false" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
+        <state relative-caret-position="1095">
+          <caret line="131" column="9" lean-forward="false" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/storage/logs/laravel.log">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TimesheetApprovalController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76077">
+        <state relative-caret-position="240">
+          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="22" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/users/datatables_actions.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Datatables.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/users/table.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DataTables/UserDataTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DataTables/LeaveDataTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="35" column="57" lean-forward="false" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DataTables/ModerationLeaveDataTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="32" column="86" lean-forward="false" selection-start-line="32" selection-start-column="86" selection-end-line="32" selection-end-column="86" />
         </state>
       </provider>
     </entry>
@@ -1035,248 +1068,267 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../phpmyadmin/tbl_sql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApprovalHistoryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/DataTables/ApprovalHistoryDataTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/timesheets/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/timesheets/moderation.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="147" column="35" lean-forward="false" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/DataTables/ModerationTimesheetDataTable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" column="54" lean-forward="false" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="54" />
-          <folding>
-            <element signature="e#34#43#0#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="840">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HolidayController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/timesheets/moderate_fields.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
+        <state relative-caret-position="97">
+          <caret line="46" column="59" lean-forward="false" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Mail/LeaveSubmission.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-165">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/DataTables/TimesheetInsentifDataTable.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LeaveController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="645">
+          <caret line="292" column="73" lean-forward="true" selection-start-line="290" selection-start-column="12" selection-end-line="292" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../phpmyadmin/index.php">
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Queue/SyncQueue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="-345">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/app.css">
+    <entry file="file://$PROJECT_DIR$/resources/views/email/project/assignmember.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1016">
-          <caret line="4" column="37379" lean-forward="true" selection-start-line="4" selection-start-column="37379" selection-end-line="4" selection-end-column="37379" />
+        <state relative-caret-position="5370">
+          <caret line="358" column="74" lean-forward="false" selection-start-line="358" selection-start-column="74" selection-end-line="358" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TimesheetApprovalController.php">
+    <entry file="file://$PROJECT_DIR$/app/Mail/ProjectMemberAssign.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="95" column="9" lean-forward="true" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/reports/timesheet.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="42" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="42" />
-          <folding>
-            <marker date="1487520318000" expanded="true" signature="793:1081" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="807:1047" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="1456:1692" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="1470:1658" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="2036:2509" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="2050:2475" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="2094:2345" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="2607:2889" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="2621:2855" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="3499:3607" ph="..." />
-            <marker date="1487520318000" expanded="true" signature="3513:3606" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="58" column="10" lean-forward="true" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/DataTables/TimesheetReportDataTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#34#43#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2385">
-          <caret line="168" column="64" lean-forward="false" selection-start-line="168" selection-start-column="48" selection-end-line="168" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../phpmyadmin/sql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#84#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="450">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/SendTimesheetHRReportEmail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="23" column="54" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="54" />
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Jobs/SendProjectMemberAssignEmail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="37" column="28" lean-forward="false" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3300">
+          <caret line="235" column="0" lean-forward="false" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
           <folding>
             <element signature="e#40#76#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Timesheet.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/ProjectMember.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="299" column="5" lean-forward="false" selection-start-line="299" selection-start-column="5" selection-end-line="299" selection-end-column="5" />
-          <folding>
-            <element signature="e#30#37#0#PHP" expanded="true" />
-            <marker date="1487521619000" expanded="true" signature="5446:5908" ph="select count... approval_histories" />
-            <marker date="1487521619000" expanded="true" signature="6457:6853" ph="select count... approval_histories" />
-            <marker date="1487521619000" expanded="true" signature="8173:8826" ph="SELECT lokas... timesheet_details" />
-            <marker date="1487521619000" expanded="true" signature="8874:9316" ph="SELECT posit... tunjangan_positions" />
-            <marker date="1487521619000" expanded="true" signature="11241:11830" ph="SELECT lokas... timesheet_details" />
-            <marker date="1487521619000" expanded="true" signature="11878:12320" ph="SELECT posit... tunjangan_positions" />
-            <marker date="1487521619000" expanded="true" signature="17723:17808" ph="SELECT * FRO... timesheet_details" />
-            <marker date="1487521619000" expanded="true" signature="18452:18809" ph="select appro... approval_histories" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/ide-helper.php">
+    <entry file="file://$PROJECT_DIR$/config/queue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1815">
+        <state relative-caret-position="255">
+          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/reports/timesheet.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="68" column="21" lean-forward="false" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/phpoffice/phpexcel/Classes/PHPExcel/Worksheet/PageSetup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="349" column="33" lean-forward="false" selection-start-line="349" selection-start-column="24" selection-end-line="349" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Writers/LaravelExcelWriter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8490">
+          <caret line="586" column="27" lean-forward="false" selection-start-line="586" selection-start-column="27" selection-end-line="586" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/phpoffice/phpexcel/Classes/PHPExcel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-328">
+          <caret line="919" column="18" lean-forward="false" selection-start-line="919" selection-start-column="11" selection-end-line="919" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Writers/CellWriter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="148" column="13" lean-forward="false" selection-start-line="148" selection-start-column="13" selection-end-line="148" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/reports/finance.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="49" column="50" lean-forward="false" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mpdf/mpdf/mpdf.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/ExcelServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3210">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Excel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2765">
+          <caret line="192" column="10" lean-forward="false" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Facades/Excel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/PHPExcel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-557">
+          <caret line="62" column="5" lean-forward="true" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/maatwebsite/excel/src/config/excel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-900">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="208" column="83" lean-forward="false" selection-start-line="208" selection-start-column="83" selection-end-line="208" selection-end-column="83" />
-          <folding />
+        <state relative-caret-position="795">
+          <caret line="122" column="25" lean-forward="false" selection-start-line="122" selection-start-column="18" selection-end-line="122" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Commands/SendTimesheetFinanceReportEmail.php">
+    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="83" column="18" lean-forward="false" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="18" />
+        <state relative-caret-position="705">
+          <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2017-07-09.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18841">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/excel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="87" column="44" lean-forward="false" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.lock">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5250">
+          <caret line="350" column="14" lean-forward="false" selection-start-line="350" selection-start-column="14" selection-end-line="350" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="33" lean-forward="false" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportFinanceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#40#76#0#PHP" expanded="false" />
+            <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php">
+    <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/IsProjectManagerService">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="2625">
+          <caret line="184" column="39" lean-forward="false" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/LeaveCountService.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Timesheet.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/IsProjectManagerService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/menu.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="183" column="20" lean-forward="false" selection-start-line="183" selection-start-column="20" selection-end-line="183" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="359">
+          <caret line="639" column="0" lean-forward="true" selection-start-line="639" selection-start-column="0" selection-end-line="639" selection-end-column="0" />
+          <folding>
+            <marker date="1500815709000" expanded="true" signature="5120:5582" ph="select count... approval_histories" />
+            <marker date="1500815709000" expanded="true" signature="6131:6527" ph="select count... approval_histories" />
+            <marker date="1500815709000" expanded="true" signature="7847:8500" ph="SELECT lokas... timesheet_details" />
+            <marker date="1500815709000" expanded="true" signature="8548:8990" ph="SELECT posit... tunjangan_positions" />
+            <marker date="1500815709000" expanded="true" signature="10895:11484" ph="SELECT lokas... timesheet_details" />
+            <marker date="1500815709000" expanded="true" signature="11532:11974" ph="SELECT posit... tunjangan_positions" />
+            <marker date="1500815709000" expanded="true" signature="17357:17442" ph="SELECT * FRO... timesheet_details" />
+            <marker date="1500815709000" expanded="true" signature="18086:18443" ph="select appro... approval_histories" />
+            <marker date="1500815709000" expanded="true" signature="21747:22065" ph="select * fro... count" />
+            <marker date="1500815709000" expanded="true" signature="21763:22044" ph="SELECT count... " />
+            <marker date="1500815709000" expanded="true" signature="23711:23880" ph="select * fro... count" />
+            <marker date="1500815709000" expanded="true" signature="23726:23872" ph="SELECT count... timesheets" />
+            <marker date="1500815709000" expanded="true" signature="25865:26351" ph="SELECT lokas... timesheet_details" />
+            <marker date="1500815709000" expanded="true" signature="26557:27043" ph="SELECT lokas... timesheet_details" />
+            <marker date="1500815709000" expanded="true" signature="27141:27583" ph="SELECT posit... tunjangan_positions" />
+          </folding>
         </state>
       </provider>
     </entry>

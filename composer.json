@@ -10,7 +10,7 @@
         "yajra/laravel-datatables-oracle": "~6.0",
         "barryvdh/laravel-ide-helper": "^2.1",
         "infyomlabs/laravel-generator": "5.3.x-dev",
-        "laravelcollective/html": "dev-master",
+        "laravelcollective/html": "5.3.*",
         "infyomlabs/adminlte-templates": "5.3.x-dev",
         "infyomlabs/swagger-generator": "dev-master",
         "jlapp/swaggervel": "dev-master",
@@ -20,8 +20,11 @@
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "owen-it/laravel-auditing": "^3.1",
-        "maatwebsite/excel": "^2.1",
-        "hootlex/laravel-moderation": "^1.0"
+        "hootlex/laravel-moderation": "^1.0",
+        "tecnick.com/tcpdf": "6.0.099",
+        "jeremeamia/superclosure": "2.3.0",
+        "maatwebsite/excel": "2.1.17",
+        "dompdf/dompdf": "~0.6.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

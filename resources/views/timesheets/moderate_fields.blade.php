@@ -42,8 +42,16 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">TIMESHEET APPROVAL SUMMARY</h3>
                         <td></td>
+                        <div class="box-body box-profile">
+                            @if(!empty($user['image']))
+                                {{ Html::image('profilepics/'.$user['image'], 'User Image', array('class' => 'profile-user-img img-responsive img-circle')) }}
+                            @else
+                                <i class="profile-user-img img-responsive img-circle icon ion-person" style="text-align: center;font-size: 55px; color: antiquewhite"></i>
+                            @endif
+                            <h3 class="profile-username text-center">{{$user['name']}}</h3>
+                            <p class="text-muted text-center">{{$user['positions']->name}}</p>
+                        </div>
                         </br>
-                        <h2 class="box-title">{{$user['name']}}</h2>
                     </div>
                     <div class="box-body">
                         <table class="table summary project">
@@ -238,7 +246,6 @@
                                 <th width="75">End</th>
                                 <th>Lokasi</th>
                                 <th>Aktifitas</th>
-                                <th>Keterangan</th>
                                 <th>
                                     <button type="button" id="detailcheckbox" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
                                 </th>
@@ -257,19 +264,18 @@
                                                class="form-control timepicker" placeholder="00:00"
                                                value="{{ $detail->end_time }}" disabled="true"></td>
 
-                                    <td>
+                                    <td class="col-md-2">
                                         {!! Form::select('timesheetdetail['.$row.'][lokasi]', [''=>'']+$lokasi, $detail->lokasi, ['class' => 'form-control select2','id'=>'timesheet'.$row.'lokasi', 'disabled']) !!}
                                     </td>
-                                    <td class="col-md-2">
+                                    <td class="col-md-3">
                                         {!! Form::select('timesheetdetail['.$row.'][activity]', [''=>'']+$activity, $detail->activity, ['class' => 'form-control select2','id'=>'timesheet'.$row.'activity','onchange'=>'onChangeActivity('.$row.')', 'disabled']) !!}
-                                    </td>
 
-                                    <td>
                                         <input type="textarea" name="timesheetdetail[{{$row}}][activity_other]"
                                                class="form-control" id="timesheet{{$row}}activity_other"
                                                value="{{$detail->activity_detail}}" style="display:visible;"
-                                               disabled="true">
+                                               disabled="true" title="{{$detail->activity_detail}}">
                                     </td>
+
                                     @if($detail->approval_status_history != 0 && $approval['role']!=4)
                                         <td class="col-md-1">
                                             {!! $detail->status !!}
@@ -330,7 +336,7 @@
                                     {{ Form::text('insentif['.$row.'][value]', $detail->value, array('class' => 'form-control money', 'disabled')) }}
                                     <td>
                                     <td class="col-md-3">
-                                        {{ Form::text('insentif['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control', 'disabled')) }}
+                                        {{ Form::text('insentif['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control', 'disabled', 'title' => $detail->keterangan)) }}
                                     </td>
                                     @if($detail->approval_status != 0 && $approval['role']!=4)
                                         <td class="col-md-1">
@@ -393,7 +399,7 @@
                                     <td class="col-md-2">
                                     {{ Form::text('trans['.$row.'][value]', $detail->value, array('class' => 'form-control money','disabled')) }}
                                     <td class="col-md-3">
-                                        {{ Form::text('trans['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control','disabled')) }}
+                                        {{ Form::text('trans['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control','disabled', 'title' => $detail->keterangan)) }}
                                     </td>
                                     <td class="col-md-1">
                                         @if($detail->file!=null)
@@ -525,6 +531,7 @@
 
         });
 
+        $('textarea').autoResize();
     </script>
     @endsection
 

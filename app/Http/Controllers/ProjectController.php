@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\DataTables\ProjectDataTable;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Jobs\SendProjectMemberAssignEmail;
 use App\Models\Constant;
 use App\Models\Department;
+use App\Models\Project;
 use App\Models\ProjectMember;
 use App\Models\Tunjangan;
 use App\Models\TunjanganProject;
@@ -75,6 +77,8 @@ class ProjectController extends AppBaseController
                     'project_id' => $project->id,
                     'user_id' => $m
                 ];
+
+                $this->sendProjectMemberEmail($project->id, $m);
             }
         }
         DB::table('project_members')->insert($insert);
@@ -162,6 +166,8 @@ class ProjectController extends AppBaseController
 
         $project = $this->projectRepository->update($request->all(), $id);
 
+        $this->sendNewProjectMemberEmail($project, $request->member);
+
         // Update member n tunjangan Project
         if ($request->member != null) {
             //delete previous data to prevent duplicate
@@ -217,5 +223,28 @@ class ProjectController extends AppBaseController
         Flash::success('Project deleted successfully.');
 
         return redirect(route('projects.index'));
+    }
+
+
+    private function sendNewProjectMemberEmail(Project $project, Array $member)
+    {
+        $existing_member = ProjectMember::where('project_id', '=', $project->id)->with('users')->pluck('user_id')->all();
+
+        $newMember = array_diff($member, $existing_member);
+
+        foreach ($newMember as $m) {
+            $this->sendProjectMemberEmail($project->id, $m);
+        }
+    }
+
+    /**
+     * Send email to project member
+     *
+     * @param User $user
+     * @param Project $project
+     */
+    private function sendProjectMemberEmail(int $project, int $user)
+    {
+        $this->dispatch(new SendProjectMemberAssignEmail($project, $user));
     }
 }

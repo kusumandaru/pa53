@@ -271,10 +271,12 @@ class UserController extends AppBaseController
                 return redirect()->back();
             }
             $request['password'] = Hash::make($request['password']);
-            $user = $this->userRepository->update($request->all(), $id);
         }
-
-
+        else{
+            $request['password'] = $user['password'];
+        }
+        
+        $user = $this->userRepository->update($request->all(), $id);
         Flash::success('User updated successfully.');
 
         return redirect(route('home'));

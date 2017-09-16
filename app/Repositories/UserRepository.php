@@ -24,7 +24,8 @@ class UserRepository extends BaseRepository
         'remember_token',
         'image',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'pjsvp'
     ];
 
     /**

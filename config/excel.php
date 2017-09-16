@@ -85,7 +85,7 @@ return array(
             'orientation'           => 'portrait',
             'paperSize'             => '9',
             'scale'                 => '100',
-            'fitToPage'             => false,
+            'fitToPage'             => true,
             'fitToHeight'           => true,
             'fitToWidth'            => true,
             'columnsToRepeatAtLeft' => array('', ''),
@@ -299,7 +299,6 @@ return array(
             |--------------------------------------------------------------------------
             */
             'drivers' => array(
-
                 /*
                 |--------------------------------------------------------------------------
                 | DomPDF settings

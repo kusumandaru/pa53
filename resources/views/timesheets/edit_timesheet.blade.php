@@ -26,13 +26,18 @@
                 return array('period' => $period, 'week' => $w, 'year' => $y, 'listDate' => $listDate);
             }
 
+            function isWeekend($date)
+            {
+                return (date('N', strtotime($date)) >= 6);
+            }
+
             ?>
 
 
             <div class="clearfix"></div>
 
 
-            {!! Form::open(['route' => 'add_timesheet.create','id'=>'create_timesheet']) !!}
+            {!! Form::open(['route' => 'add_timesheet.create','id'=>'create_timesheet','onsubmit'=>'return beforeSubmit();']) !!}
 
             <div class="clearfix"></div>
 
@@ -254,21 +259,22 @@
                             </tr>
                             @foreach ($timesheet_details as $row=>$detail)
                                 @if($detail->approval_status == 1 && $detail->selected==1)
-                                    <tr>
+                                    <tr {!! isWeekend(date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))) ? 'style="background-color: antiquewhite; "' : ''; !!}>
                                         {{ Form::hidden('timesheet['.$row.'][id]', $detail->id) }}
                                         <td class="col-md-1">
                                             {{ Form::checkbox('timesheet['.$row.'][select]', true, $detail->selected,['disabled'=>'']) }}
                                             {{ Form::hidden('timesheet['.$row.'][select]',  $detail->selected) }}
+                                            {!! Form::hidden('timesheet['.$row.'][approval_status]', $detail->approval_status) !!}
                                         </td>
                                         <td>
                                             {!! Form::select('timesheet['.$row.'][project]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control ','disabled'=>'disabled']) !!}
                                             {!! Form::hidden('timesheet['.$row.'][project]', $detail->project_id) !!}
                                         </td>
-                                        <td>{{date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
-                                        <td><input type="text" name="timesheet[{{$row}}][start]"
+                                        <td>{{date('D , d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
+                                        <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][start]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->start_time }}" readonly></td>
-                                        <td><input type="text" name="timesheet[{{$row}}][end]"
+                                        <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][end]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->end_time }}" readonly></td>
 
@@ -287,19 +293,20 @@
                                         <td>{!! $detail->status !!}</td>
                                     </tr>
                                 @else
-                                    <tr>
+                                    <tr {!! isWeekend(date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))) ? 'style="background-color: antiquewhite; "' : ''; !!}>
                                         {{ Form::hidden('timesheet['.$row.'][id]', $detail->id) }}
                                         <td class="col-md-1">
-                                            {{ Form::checkbox('timesheet['.$row.'][select]', true, $detail->selected) }}
+                                            {{ Form::checkbox('timesheet['.$row.'][select]', true, $detail->selected) }}                                         
+                                        {!! Form::hidden('timesheet['.$row.'][approval_status]', $detail->approval_status) !!}
                                         </td>
                                         <td>
                                             {!! Form::select('timesheet['.$row.'][project]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control select2']) !!}
                                         </td>
-                                        <td>{{date('d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
-                                        <td><input type="text" name="timesheet[{{$row}}][start]"
+                                        <td>{{date('D , d-m-Y', strtotime(str_replace(' 00:00:00','',$detail->date)))}}{{ Form::hidden('timesheet['.$row.'][date]', str_replace(' 00:00:00','',$detail->date)) }}</td>
+                                        <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][start]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->start_time }}"></td>
-                                        <td><input type="text" name="timesheet[{{$row}}][end]"
+                                        <td class="col-xs-4 col-sm-2 col-md-1"><input type="text" name="timesheet[{{$row}}][end]"
                                                    class="form-control timepicker" placeholder="00:00"
                                                    value="{{ $detail->end_time }}"></td>
 
@@ -414,32 +421,32 @@
                     <div class="box-body">
                         <table class="table table-hover small-text" id="tb_trasnportasi">
                             <tr class="tr-header">
-                                <th>Tanggal</th>
-                                <th>Proyek</th>
-                                <th>Jumlah</th>
-                                <th>Keterangan</th>
-                                <th>File</th>
-                                <th>Approval</th>
-                                <th><a href="javascript:void(0);" style="font-size:18px;" id="addTransportasi"
+                                <th class="col-md-1">Tanggal</th>
+                                <th class="col-md-2">Proyek</th>
+                                <th class="col-md-1">Jumlah</th>
+                                <th class="col-md-1">Keterangan</th>
+                                <th class="col-md-1">File</th>
+                                <th class="col-md-1">Approval</th>
+                                <th class="col-md-1"><a href="javascript:void(0);" style="font-size:18px;" id="addTransportasi"
                                        title="Add Transportasi"><span class="glyphicon glyphicon-plus"></span></a>
                                 </th>
                             </tr>
                             @foreach ($timesheet_transport as $row=>$detail)
                                 @if($detail->status != 1)
                                 <tr>
-                                    <td>
+                                    <td class="col-md-1">
                                     {{ Form::hidden('trans['.$row.'][id]', $detail->id) }}
                                     {{ Form::hidden('trans['.$row.'][guid]', $detail->guid) }}
                                     {{ Form::date('trans['.$row.'][date]', $detail->date, array('class' => 'form-control','data-date-format'=>'dd/mm/yyyy')) }}
-                                    <td>
+                                    <td class="col-md-2">
                                         {!! Form::select('trans['.$row.'][project_id]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control select2']) !!}
                                     </td>
-                                    <td>
+                                    <td class="col-md-2">
                                     {{ Form::text('trans['.$row.'][value]', $detail->value, array('class' => 'form-control money')) }}
                                     <td>
                                         {{ Form::text('trans['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control')) }}
                                     </td>
-                                    <td>
+                                    <td class="col-md-1">
                                     <center>
                                             <p>
                                                 <a href="javascript:changeProfile({{$row}})" style="text-decoration: none;"><i                               class="glyphicon glyphicon-edit"></i> Change</a>&nbsp;&nbsp;
@@ -452,28 +459,28 @@
                                             <input type="file" id="file{{$row}}" onchange="fileChange({{$row}})" style="display: none"/>
                                         </center>
                                     </td>
-                                    <td>{!!$detail->approval!!}</td>
+                                    <td class="col-md-1">{!!$detail->approval!!}</td>
                                     <td><a href="javascript:void(0);" class="remove">
                                     <span class="glyphicon glyphicon-remove"></span></a></td>
                                 </tr>
                                 @else
                                 <tr>
-                                    <td>
+                                    <td class="col-md-1">
                                     {{ Form::hidden('trans['.$row.'][id]', $detail->id) }}
                                     {{ Form::hidden('trans['.$row.'][guid]', $detail->guid) }}
                                     {{ Form::hidden('trans['.$row.'][date]', $detail->date) }}
                                     {{ Form::date('trans['.$row.'][date]', $detail->date, array('class' => 'form-control','disabled'=>'','data-date-format'=>'dd/mm/yyyy')) }}
-                                    <td>
+                                    <td class="col-md-2">
                                     {{ Form::hidden('trans['.$row.'][project_id]', $detail->project_id) }}
-                                    {!! Form::select('trans['.$row.'][project_id]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control select2','disabled'=>'']) !!}
+                                    {!! Form::select('trans['.$row.'][project_id]', [''=>'']+$project, $detail->project_id, ['class' => 'form-control','disabled'=>'']) !!}
                                     </td>
                                     <td>
                                     {{ Form::hidden('trans['.$row.'][value]', $detail->value) }}
                                     {{ Form::text('trans['.$row.'][value]', $detail->value, array('class' => 'form-control money','readonly'=>'')) }}
-                                    <td>
+                                    <td class="col-md-2">
                                         {{ Form::text('trans['.$row.'][desc]', $detail->keterangan, array('class' => 'form-control','readonly'=>'')) }}
                                     </td>
-                                    <td>
+                                    <td class="col-md-1">
                                     <center>
                                             <p>
                                                 <a target="_blank" href="{{url('dl')}}/{{$detail->file}}" id="dl{{$row}}">{{$detail->file}}</a>
@@ -482,7 +489,7 @@
                                             <input type="file" id="file{{$row}}" onchange="fileChange({{$row}})" style="display: none"/>
                                         </center>
                                     </td>
-                                    <td>{!!$detail->approval!!}</td>
+                                    <td class="col-md-1">{!!$detail->approval!!}</td>
                                     <td><a href="javascript:void(0);" class="remove">
                                     <span class="glyphicon glyphicon-remove"></span></a></td>
                                 </tr>
@@ -502,17 +509,12 @@
             {{ Form::hidden('month', $timesheet->month) }}
             {{ Form::hidden('year', $timesheet->year) }}
             {{ Form::hidden('week', $timesheet->week) }}
-            {{ Form::hidden('period', getListDate($timesheet->year,$timesheet->month,$timesheet->week)['period']) }}
+            {{ Form::hidden('period', $timesheet->periode) }}
 
             <div class="form-group col-sm-12">
             @if($timesheet->action === 'Disimpan')
-            {!! Form::submit('Save',['name'=>'action','class' => 'btn btn-primary','id'=>'saveBtn']) !!}
-            @endif
+<!--  {!! Form::submit('Save',['name'=>'action','class' => 'btn btn-primary','id'=>'saveBtn']) !!} -->            @endif
             {!! Form::submit('Submit',['name'=>'action','class' => 'btn btn-primary','id'=>'submitBtn']) !!}
-            
-            
-                
-                
             </div>
             <div class="clearfix"></div>
             {!! Form::close() !!}
@@ -551,7 +553,7 @@ $(document).ajaxStop(function(){
     </script>
     <script>
         $(document).ready(function () {
-            for (i = 0; i < 7; i++) {
+            for (i = 0; i < 10; i++) {
                 if (($('#select2-timesheet' + i + 'activity-container').text() === 'IMPLEMENTASI') || ($('#select2-timesheet' + i + 'activity-container').text() === 'MANAGED OPERATION') || ($('#select2-timesheet' + i + 'activity-container').text() === 'IDLE')) {
                     $('#timesheet' + i + 'activity_other').show();
                 } else {
@@ -693,9 +695,9 @@ $(document).ajaxStop(function(){
 
         function onChangeLocation(obj, id) {
             //alert(obj.value);
-            if (obj.value === 'DOMESTIK P. JAWA') {
+            if (obj.value === 'JAWA') {
                 $('#insentiv' + id + 'value').val({{ $bantuan_perumahan['non_lokal'] }})
-            } else if (obj.value === 'DOMESTIK L. JAWA') {
+            } else if (obj.value === 'LUARJAWA') {
                 $('#insentiv' + id + 'value').val({{ $bantuan_perumahan['luar_jawa'] }})
             }
             else if (obj.value === 'INTERNATIONAL') {
@@ -709,12 +711,14 @@ $(document).ajaxStop(function(){
                 e.preventDefault();
                 $('[disabled]').removeAttr('disabled');
                 $('#create_timesheet').append('<input type = "hidden" name="action" value="Submit" />');
+                checkActivity();
                 $('#create_timesheet').submit();
             });
             $('#saveBtn').click(function(e){
                 e.preventDefault();
                 $('[disabled]').removeAttr('disabled');
                 $('#create_timesheet').append('<input type = "hidden" name="action" value="Save" />');
+                checkActivity();
                 $('#create_timesheet').submit();
             });
              $("#create_timesheet").submit(function ($) {
@@ -848,6 +852,29 @@ $(document).ajaxStop(function(){
     path = path.substring(path.lastIndexOf("/")+ 1);
     return (path.match(/[^.]+(\.[^?#]+)?/) || [])[0];
 }
+
+function checkActivity(){
+    var selected = [];
+$('input:checked').each(function() {
+  selected.push($(this).attr('name'));
+});
+
+for (var i = 0; i < selected.length; i++) {
+  var row = selected[i].replace('][select]', '').replace('timesheet[', '');
+  if ($('#timesheet' + row + 'activity').val() == '' || $('#timesheet' + row + 'activity').val() == null) {
+    alert('Mohon lengkapi data timesheet yang telah Anda centang');
+    throw new Error('Mohon lengkapi data timesheet yang telah Anda centang');
+  }
+}
+}
+
+function beforeSubmit() {
+    if (confirm("Centang timesheet yang diinginkan untuk dikirim. Dan uncentang timesheet yang ingin disimpan untuk diedit di lain waktu")) {
+        return true;
+    } 
+    return false;
+}
+
 
 </script>
 

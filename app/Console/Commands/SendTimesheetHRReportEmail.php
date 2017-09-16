@@ -56,7 +56,7 @@ class SendTimesheetHRReportEmail extends Command
         //$arguments = $this->arguments();
         //$user = $this->argument('user');
 
-        $id = 1;
+        $id = 115; //PMO Sigma 115 pmo, 14 oky
         $approvalStatus = array(1,4); //approve and paid
 
         $timesheet = TimesheetDetail::
@@ -65,26 +65,31 @@ class SendTimesheetHRReportEmail extends Command
         join('projects', 'projects.id', 'timesheet_details.project_id')->
         join('approval_histories', 'approval_histories.transaction_id', 'timesheet_details.id')->
         whereIn('approval_histories.approval_status', $approvalStatus)->
-        where('approval_histories.sequence_id', '=', 2)->
-        whereBetween('timesheet_details.created_at', [Carbon::today()->subDays(7)->toDateString(),Carbon::today()->toDateString()])->
-        get(['*',
-            DB::raw('timesheet_details.created_at as created_timesheet')
+        where('approval_histories.sequence_id', '=', 0)->
+        whereBetween('timesheet_details.date', [Carbon::today()->subDays(9)->toDateString(),Carbon::today()->subDays(3)->toDateString()])->
+        get(['users.nik','users.email', 'projects.code', 'timesheet_details.activity',
+             'timesheet_details.activity_detail','timesheet_details.start_time', 'timesheet_details.end_time', 
+             'timesheet_details.date', 'projects.claimable',
+            DB::raw('(if(claimable = 1, \'Claimable\', \'Non Claimable\')) as is_claimable') ,
+            DB::raw('timesheet_details.date as created_timesheet')
         ]);
-
+        //h-9 until h-3 saturday to friday
         $data = array();
         $count = 0;
         foreach ($timesheet as $result) {
             //$data[] = (array)$result;
             //$res = array();
             $res = array(
-                'user_id'=>$result->nik,
-                'project_id'=>$result->project_id,
-                'wbs_id'=>$result->code,
-                'subject'=>$result->activity,
-                'message'=>$result->activity_detail,
-                'hour_total'=>$result->hour,
+                'nik'=>$result->nik,
+                'email'=>$result->email,
+                'iwo'=>$result->code,
+                'task_name'=>$result->activity_detail,
+                'total_work'=>$result->hour,
                 'ts_date'=>$result->date,
-                'submit_date'=>$result->created_timesheet
+                'submit_date'=>$result->created_timesheet,
+                'effort_type'=>$result->activity,
+                'task_type'=>$result->is_claimable
+                
         );
             $data[$count] = $res;
             $count++;
@@ -110,8 +115,11 @@ class SendTimesheetHRReportEmail extends Command
 
         })->store('xls', false, true);
 
+        $cc = ['tmsupport@metrasys.co.id', 'ina.hermina@sigma.co.id','donna.elvira@metrasys.co.id','oky.gustiawan@metrasys.co.id'];
         // send mail
-        $mail = Mail::to($user['email'])->send(new TimesheetSubmission($user, $path['full']));
+        $mail = Mail::to($user['email'])
+            ->cc($cc)
+            ->send(new TimesheetSubmission($user, $path['full']));
 
         $this->info('Executed');
         

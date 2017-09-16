@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
 use URL;
 
 class Handler extends ExceptionHandler
@@ -49,6 +50,18 @@ class Handler extends ExceptionHandler
             $url = URL::to('/');
             return response()->view('errors.custom', ['title'=>'Not Authorized please login again','url'=>$url], 500);
         }
+
+        if(env('CUSTOM_DEBUG', true))
+        {
+            if($exception instanceof \Illuminate\Database\QueryException){
+                $url = URL::to('/');
+                return response()->view('errors.custom', ['title'=>'Kesalahan','url'=>$url], 500);
+
+                // send your custom error message here
+            }
+        }
+
+
 
         return parent::render($request, $exception);
     }

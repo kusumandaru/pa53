@@ -47,7 +47,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/owen-it/laravel-auditing" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phenx/php-font-lib" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phenx/php-svg-lib" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
@@ -94,6 +93,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/tecnick.com/tcpdf" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
@@ -160,7 +160,6 @@
           <root url="file://$MODULE_DIR$/vendor/owen-it/laravel-auditing" />
           <root url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
           <root url="file://$MODULE_DIR$/vendor/phenx/php-font-lib" />
-          <root url="file://$MODULE_DIR$/vendor/phenx/php-svg-lib" />
           <root url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-common" />
           <root url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock" />
           <root url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
@@ -207,6 +206,7 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/translation" />
           <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/vendor/tecnick.com/tcpdf" />
           <root url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
           <root url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
           <root url="file://$MODULE_DIR$/vendor/webmozart/assert" />
@@ -259,7 +259,6 @@
           <root url="file://$MODULE_DIR$/vendor/owen-it/laravel-auditing" />
           <root url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
           <root url="file://$MODULE_DIR$/vendor/phenx/php-font-lib" />
-          <root url="file://$MODULE_DIR$/vendor/phenx/php-svg-lib" />
           <root url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-common" />
           <root url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock" />
           <root url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
@@ -306,11 +305,22 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/translation" />
           <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/vendor/tecnick.com/tcpdf" />
           <root url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
           <root url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
           <root url="file://$MODULE_DIR$/vendor/webmozart/assert" />
           <root url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-oracle" />
           <root url="file://$MODULE_DIR$/vendor/zircote/swagger-php" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.0.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.0.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

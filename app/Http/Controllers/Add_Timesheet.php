@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Constant;
 use App\Models\User;
 use App\Models\Project;
+use App\Models\Position;
 use App\Models\ProjectMember;
-
 use App\Models\Timesheet;
 use App\Models\TimesheetDetail;
 use App\Models\TimesheetInsentif;
@@ -36,10 +36,12 @@ class Add_Timesheet extends Controller
     }
 
     public function index()
-    {
-$project = ProjectMember::join('projects','project_members.project_id','projects.id')
+    {       
+        $project = ProjectMember::join('projects','project_members.project_id','projects.id')
        ->where('user_id','=',Auth::user()->id)
-       ->pluck('projects.project_name', 'project_id')->all();        $nonlokal = array('DOMESTIK P. JAWA' => 'DOMESTIK P. JAWA', 'DOMESTIK L. JAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
+       ->whereRaw('projects.deleted_at is null')
+       ->pluck('projects.project_name', 'project_id')->all();
+        $nonlokal = array('JAWA' => 'DOMESTIK P. JAWA', 'LUARJAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
         $bantuan_perumahan = $this->getTunjanganPerumahan();
         return view('timesheets.add_timesheet', compact('project', 'nonlokal', 'bantuan_perumahan'));
     }
@@ -87,6 +89,7 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
         $activity = ['' => ''] + Constant::where('category', 'Activity')->orderBy('name', 'asc')->pluck('name', 'value')->all();
         $project = ProjectMember::join('projects','project_members.project_id','projects.id')
        ->where('user_id','=',Auth::user()->id)
+       ->whereRaw('projects.deleted_at is null')
        ->pluck('projects.project_name', 'project_id')->all();
         $timesheet = Timesheet::where('id', '=', $id)->first();
         $timesheet_details = TimesheetDetail::where('timesheet_id', '=', $id)->get();
@@ -101,7 +104,7 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
         foreach ($timesheet_transport as $g) {
             $sum_timesheet_transport += $g->value;
         }
-        $nonlokal = array('DOMESTIK P. JAWA' => 'DOMESTIK P. JAWA', 'DOMESTIK L. JAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
+        $nonlokal = array('JAWA' => 'DOMESTIK P. JAWA', 'LUARJAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
         $bantuan_perumahan = $this->getTunjanganPerumahan();
         //return response()->json($timesheet_transport);
         $summary = $this->populateSummary($id);
@@ -131,7 +134,7 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
                     }
                 }
 
-            } else if ($m->lokasi === "DOMESTIK L. JAWA") {
+            } else if ($m->lokasi === "LUARJAWA") {
                 $summary['luar_jawa']['count'] = $m->total;
                 if (!empty ($arr)) {
                     foreach ($arr['luar_jawa'] as $key => $value) {
@@ -139,7 +142,7 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
                         //  echo $key. ' = '.$value. ' * '.$m->total.' '.$value*$m->total.'<br>';
                     }
                 }
-            } else if ($m->lokasi === "DOMESTIK P. JAWA") {
+            } else if ($m->lokasi === "JAWA") {
                 $summary['non_lokal']['count'] = $m->total;
                 if (!empty ($arr)) {
                     foreach ($arr['non_lokal'] as $key => $value) {
@@ -229,8 +232,9 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
         $activity = ['' => ''] + Constant::where('category', 'Activity')->orderBy('name', 'asc')->pluck('name', 'value')->all();
         $project = ProjectMember::join('projects','project_members.project_id','projects.id')
        ->where('user_id','=',Auth::user()->id)
+       ->whereRaw('projects.deleted_at is null')
        ->pluck('projects.project_name', 'project_id')->all();
-        $nonlokal = array('DOMESTIK P. JAWA' => 'DOMESTIK P. JAWA', 'DOMESTIK L. JAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
+        $nonlokal = array('JAWA' => 'DOMESTIK P. JAWA', 'LUARJAWA' => 'DOMESTIK L. JAWA', 'INTERNATIONAL' => 'INTERNATIONAL');
         $bantuan_perumahan = $this->getTunjanganPerumahan();
         return view('timesheets.add_timesheet', compact('project', 'lokasi', 'activity', 'nonlokal', 'bantuan_perumahan'));
     }
@@ -324,7 +328,8 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
                     'project_id' => $value['project'],
                     'selected' => isset($value['select']) ? 1 : 0,
                     'activity_detail' => $value['activity_other'],
-                    'approval_status' => $approval_status
+                    'approval_status' => isset($value['select']) ? 1 : 0,
+                    'user_type' => $this->getUserType($value['project'])
                 ] + (isset($value['id']) ? array('id' => $value['id']) : array());
         }
         //return response()->json($timesheets);
@@ -339,7 +344,8 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
                         'keterangan' => $value['desc'],
                         'guid'=> $value['guid'],
                         'timesheet_id' => $id,
-                        'status' => $approval_status
+                        'status' => $approval_status,
+                        'user_type' => $this->getUserType($value['project_id'])
                         //   'project_id'=> $value['project'],
                     ];// + (isset($value['id']) ? array('id' => $value['id']) : array());
             }
@@ -355,7 +361,8 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
                         'lokasi' => $value['lokasi'],
                         'timesheet_id' => $id,
                         'guid'=> $value['guid'],
-                        'status' => $approval_status
+                        'status' => $approval_status,
+                        'user_type' => $this->getUserType($value['project_id'])
                         //   'project_id'=> $value['project'],
                     ] ;//+ (isset($value['id']) ? array('id' => $value['id']) : array());
             }
@@ -389,44 +396,46 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
             ->get();
 
         $timesheetInsentif = DB::table('timesheet_insentif')
-            ->where('timesheet_id', '=', $timesheetId)
-            ->where('status','=',1)
-            //paid and approve finance in approval history not in
-            ->whereNotIn('guid', function($q){
-                $q->select('guid')->from('approval_histories')
-                ->where('sequence_id', '=', '2')
-                ->where('approval_status', '=', '1')
-                ->where('approval_status', '=', '4');
-            })
-            ->get();
-            $timesheetTransport = DB::table('timesheet_transport')
-            ->where('timesheet_id', '=', $timesheetId)
-            ->where('status','=',1)
-            ->whereNotIn('guid', function($q){
-                $q->select('guid')->from('approval_histories')
-                ->where('sequence_id', '=', '2')
-                ->where('approval_status', '=', '1')
-                ->where('approval_status', '=', '4');
-            })
-            ->get();
+        ->where('timesheet_id', '=', $timesheetId)
+        ->where('status','=',1)
+        //paid and approve finance in approval history not in
+        ->whereNotIn('guid', function($q){
+            $q->select('guid')->from('approval_histories')
+            ->where('sequence_id', '=', '2')
+            ->where('approval_status', '=', '1')
+            ->where('approval_status', '=', '4');
+        })
+        ->get();
 
-        $user = Auth::user()->id;
+        $timesheetTransport = DB::table('timesheet_transport')
+        ->where('timesheet_id', '=', $timesheetId)
+        ->where('status','=',1)
+        ->whereNotIn('guid', function($q){
+            $q->select('guid')->from('approval_histories')
+            ->where('sequence_id', '=', '2')
+            ->where('approval_status', '=', '1')
+            ->where('approval_status', '=', '4');
+        })
+        ->get();
+
+        $userId = Auth::user()->id;
+        $departmentId = Auth::user()->department;
 
 
         foreach ($timesheetDetail as $td) {
             $project = DB::table('projects')
                 ->where('id', '=', $td->project_id)->first();
 
-            $approval = User::where('id', '=', $project->pm_user_id)->first();
+            $approval = $this->getApprovalFromUserType($project, $departmentId, $td->user_type);
 
-            $detailExist = $this->isApprovalHistoryExist($td->id, 2, $user, $approval);
+            $detailExist = $this->isApprovalHistoryExist($td->id, 2, $userId, $approval);
 
             if (!is_null($detailExist)) {
                 if($detailExist->approval_status != 1) {
-                    $detail = $this->updateApprovalHistory($detailExist->id, $td->date, $td->activity, $td->id, 2, $user, $approval['id']);
+                    $detail = $this->updateApprovalHistory($detailExist->id, $td->date, $td->activity, $td->id, 2, $userId, $approval['id']);
                 }
             } else {
-                $detail = $this->insertApprovalHistory($td->date, $td->activity, $td->id, 2, $user, $approval['id']);
+                $detail = $this->insertApprovalHistory($td->date, $td->activity, $td->id, 2, $userId, $approval['id'], $td->user_type, $departmentId);
             }
         }
 
@@ -434,16 +443,16 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
             $project = DB::table('projects')
                 ->where('id', '=', $ti->project_id)->first();
 
-            $approval = User::where('id', '=', $project->pm_user_id)->first();
+            $approval = $this->getApprovalFromUserType($project, $departmentId, $ti->user_type);
 
-            $insentifExist = $this->isApprovalHistoryWithGuidExist($ti->guid, 4, $user, $approval);
+            $insentifExist = $this->isApprovalHistoryWithGuidExist($ti->guid, 4, $userId, $approval);
 
             if (!is_null($insentifExist)) {
                 if($insentifExist->approval_status != 1) {
-                    $insentif = $this->updateApprovalHistory($insentifExist->id, $ti->date, $ti->keterangan, $ti->id, 4, $user, $approval['id']);
+                    $insentif = $this->updateApprovalHistory($insentifExist->id, $ti->date, $ti->keterangan, $ti->id, 4, $userId, $approval['id']);
                 }
             } else {
-                $insentif = $this->insertApprovalHistoryWithGuid($ti->date, $ti->keterangan, $ti->guid, 4, $user, $approval['id']);
+                $insentif = $this->insertApprovalHistoryWithGuid($ti->date, $ti->keterangan, $ti->guid, 4, $userId, $approval['id'], $ti->user_type, $departmentId);
             }
         }
 
@@ -451,19 +460,39 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
             $project = DB::table('projects')
                 ->where('id', '=', $tt->project_id)->first();
 
-            $approval = User::where('id', '=', $project->pm_user_id)->first();
+            $approval = $this->getApprovalFromUserType($project, $departmentId, $tt->user_type);
 
-            $transportExist = $this->isApprovalHistoryWithGuidExist($tt->guid, 3, $user, $approval);
+            $transportExist = $this->isApprovalHistoryWithGuidExist($tt->guid, 3, $userId, $approval);
 
             if (!is_null($transportExist)) {
                 if($transportExist->approval_status != 1) //if on progress than not updated
                 {
-                    $transport = $this->updateApprovalHistory($transportExist->id, $tt->date, $tt->keterangan, $td->id, 3, $user, $approval['id']);
+                    $transport = $this->updateApprovalHistory($transportExist->id, $tt->date, $tt->keterangan, $td->id, 3, $userId, $approval['id']);
                 }
             } else {
-                $transport = $this->insertApprovalHistoryWithGuid($tt->date, $tt->keterangan, $tt->guid, 3, $user, $approval['id']);
+                $transport = $this->insertApprovalHistoryWithGuid($tt->date, $tt->keterangan, $tt->guid, 3, $userId, $approval['id'],  $tt->user_type, $departmentId);
             }
         }
+    }
+
+    function getApprovalFromUserType($project, $departmentId, $userType)
+    {
+        //check if user type of transaction
+        if($userType == 0) //normal
+        {
+            $approval = User::where('id', '=', $project->pm_user_id)->first();
+        }
+        if($userType == 1) //pm
+        {
+            $approval = User::where('department', '=', $departmentId)->where('pjsvp', '=', 1)->first();
+        }
+        if($userType == 2) //pjs vp
+        {
+            $approval = Auth::user();
+        }
+
+        return $approval;
+
     }
 
     function isApprovalHistoryExist($transactionId, $transactionType, $user, $approval)
@@ -496,36 +525,129 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
         return $transactionExist;
     }
 
-    function insertApprovalHistory($date, $note, $transactionId, $transactionType, $user, $approvalId)
+    function insertApprovalHistory($date, $note, $transactionId, $transactionType, $user, $approvalId, $userType, $department)
+    {
+        //if pm -> pjsvp -> pmo -> finance
+        //if pjsvp -> autoapprove -> pmo -> finance
+        //if normal -> pm -> pmo -> finance
+
+
+        if($userType == 0) //common
+        {
+            $approval = $approvalId;
+            $approvalStatus = 0;
+            $sequence = 0;
+            $groupApproval = 0;
+
+            return $this->saveTransactionHistory($date, $note, $sequence, $transactionId, $transactionType, $approvalStatus, $user, $approval, $groupApproval);
+        }
+        if($userType == 1) //pm
+        {
+            $approvalUser = User::where('department', '=', $department)->where('pjsvp', '=', 1)->first();
+
+            $approval = $approvalUser['id'];
+            $approvalStatus = 0;
+            $sequence = 0;
+            $groupApproval = 0;
+
+            return $this->saveTransactionHistory($date, $note, $sequence, $transactionId, $transactionType, $approvalStatus, $user, $approval, $groupApproval);
+
+        }
+        if($userType == 2) //pjsvp
+        {
+            $approval = $user;
+            $approvalStatus = 1;
+            $sequence = 0;
+            $groupApproval = 0;
+
+            $this->saveTransactionHistory($date, $note, $sequence, $transactionId, $transactionType, $approvalStatus, $user, $approval, $groupApproval);
+
+            $sequenceNext = 1;
+            $approvalStatusNext = 0;
+            $approvalNext = 0;
+            $groupApprovalNext = 5; //PMO
+
+            return $this->saveTransactionHistory($date, $note, $sequenceNext, $transactionId, $transactionType, $approvalStatusNext, $user, $approvalNext, $groupApprovalNext);
+        }
+    }
+
+    function saveTransactionHistory($date, $note, $sequence, $transactionId, $transactionType, $approvalStatus, $user, $approval, $groupApproval)
     {
         $saveTransaction = DB::table('approval_histories')
             ->insertGetId(array(
                 'date' => $date,
                 'note' => $note,
-                'sequence_id' => 0,
+                'sequence_id' => $sequence,
                 'transaction_id' => $transactionId,
                 'transaction_type' => $transactionType,
-                'approval_status' => 0,
+                'approval_status' => $approvalStatus,
                 'user_id' => $user,
-                'approval_id' => $approvalId,
-                'group_approval_id' => 0
+                'approval_id' => $approval,
+                'group_approval_id' => $groupApproval
             ));
         return $saveTransaction;
     }
 
-    function insertApprovalHistoryWithGuid($date, $note, $guid, $transactionType, $user, $approvalId)
+    function insertApprovalHistoryWithGuid($date, $note, $guid, $transactionType, $user, $approvalId, $userType, $department)
+    {
+        //if pm -> pjsvp -> pmo -> finance
+        //if pjsvp -> autoapprove -> pmo -> finance
+        //if normal -> pm -> pmo -> finance
+
+
+        if($userType == 0) //common
+        {
+            $approval = $approvalId;
+            $approvalStatus = 0;
+            $sequence = 0;
+            $groupApproval = 0;
+
+            return $this->saveTransactionHistoryWithGuid($date, $note, $sequence, $guid, $transactionType, $approvalStatus, $user, $approval, $groupApproval);
+        }
+        if($userType == 1) //pm
+        {
+
+            $approvalUser = User::where('department', '=', $department)->where('pjsvp', '=', 1)->first();
+
+            $approval = $approvalUser['id'];
+            $approvalStatus = 0;
+            $sequence = 0;
+            $groupApproval = 0;
+
+            return $this->saveTransactionHistoryWithGuid($date, $note, $sequence, $guid, $transactionType, $approvalStatus, $user, $approval, $groupApproval);
+
+        }
+        if($userType == 2) //pjsvp
+        {
+            $approval = $user; //approve by pjs vp self
+            $approvalStatus = 1;
+            $sequence = 0;
+            $groupApproval = 0;
+
+            $this->saveTransactionHistory($date, $note, $sequence, $guid, $transactionType, $approvalStatus, $user, $approval, $groupApproval);
+
+            $sequenceNext = 1;
+            $approvalStatusNext = 0;
+            $approvalNext = 0;
+            $groupApprovalNext = 5; //PMO
+
+            return $this->saveTransactionHistoryWithGuid($date, $note, $sequenceNext, $guid, $transactionType, $approvalStatusNext, $user, $approvalNext, $groupApprovalNext);
+        }
+    }
+
+    function saveTransactionHistoryWithGuid($date, $note, $sequenceId, $guid, $transactionType, $approvalStatus, $user, $approval, $groupApproval)
     {
         $saveTransaction = DB::table('approval_histories')
             ->insertGetId(array(
                 'date' => $date,
                 'note' => $note,
-                'sequence_id' => 0,
+                'sequence_id' => $sequenceId,
                 'guid' => $guid,
                 'transaction_type' => $transactionType,
-                'approval_status' => 0,
+                'approval_status' => $approvalStatus,
                 'user_id' => $user,
-                'approval_id' => $approvalId,
-                'group_approval_id' => 0
+                'approval_id' => $approval,
+                'group_approval_id' => $groupApproval
             ));
         return $saveTransaction;
     }
@@ -569,18 +691,36 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
 
     public function getColumns()
     {
-        $test = count(DB::select(DB::raw('SELECT * FROM `timesheet_details` WHERE timesheet_id=12 and selected=1')));
-        
-                $alert = DB::select(DB::raw("SELECT DATE_FORMAT(approval_histories.moderated_at, \"%d-%m-%Y %H:%i:%p\") as date,
-                CASE 
-                WHEN sequence_id=0 THEN 'PM'
-                WHEN sequence_id=1 THEN 'PMO'
-                WHEN sequence_id=2 THEN 'Finance'
-                END approval,
-                approval_histories.approval_id,users.name,approval_note FROM approval_histories,timesheets,timesheet_details,users where users.id = approval_histories.approval_id and timesheet_details.timesheet_id = timesheets.id and approval_histories.approval_status=2 or approval_histories.approval_status=5 and timesheet_details.timesheet_id = timesheet_details.id and timesheets.id = 7 group by approval_note"));
-               // return response()->json(json_decode(json_encode($alert), true));
-                
-               return Datatables::of(collect($alert))->make(true);
+        $user = User::where('id','=',5)->first();
+        return Position::where('id','=',$user->position)->first()->name;
+        return User::where('id','=',5)->first();
+       //getFinanceSummary($user_id, $project_id)
+      // return response()->json($timesheet = Timesheet::where('id', '=', 231)->first());
+       return DB::select(DB::raw('select users.name from approval_histories join users ON users.id = approval_histories.approval_id where approval_histories.sequence_id=1 and approval_histories.transaction_type=2 and approval_status=1 and approval_histories.transaction_id in ( select timesheet_details.id from timesheet_details where project_id = 11) AND users.deleted_at IS NULL ORDER BY approval_id LIMIT 1'));
+       return response()->json(DB::table('projects')->where('id', 1)->first());
+       return $user = DB::table('users')
+            ->where('id', $userId)
+           // ->where('pm_user_id', $userId)
+            ->first();
+       
+        $member = DB::table('project_members')
+        ->join('users', 'users.id', 'project_members.user_id')
+        ->where('project_id','=',3)
+        ->pluck('users.name','users.id');
+         return response()->json($member);
+          //return response()->json(Timesheet::getFinanceSummary(1,1));
+
+//         SELECT * FROM `project_members` join projects
+// on project_member.user_id = projects.id
+// where user_id=4
+        return $this->getUserType(16);
+         $userId = Auth::User()->id;
+        $user = DB::table('users')
+            ->where('id', $userId)
+           // ->where('pm_user_id', $userId)
+            ->first();
+            return response()->json($user->pjsvp);
+       return $timesheets;
     }
 
     public function getColor($status)
@@ -608,6 +748,7 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
         //         'fail' => true,
         //         'errors' => $validator->getMessageBag()->toArray()
         //     );
+        
         $extension = $request->file('file')->getClientOriginalExtension(); // getting image extension
         $dir = 'upload/';
         $filename = uniqid() . '_' . time() . '.' . $extension;
@@ -621,6 +762,31 @@ $project = ProjectMember::join('projects','project_members.project_id','projects
     }
 
     public function downloadFile($filename){
+        ob_end_clean();
         return response()->download(public_path('upload/'.$filename));
+    }
+
+    public function getUserType($project_id)
+    {
+        //0 consultant
+        //1 pm
+        //2 pjsvp
+        $userId = Auth::User()->id;
+        $timesheets = DB::table('projects')
+            ->where('id', $project_id)
+            ->where('pm_user_id', $userId)
+            ->get();
+        $user = DB::table('users')
+            ->where('id', $userId)
+            ->first();
+        if(count($user) > 0) {
+            if($user->pjsvp == 1 )
+            return 2;
+        }
+        if (count($timesheets) > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

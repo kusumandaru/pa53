@@ -87,7 +87,7 @@ class TimesheetApprovalController extends AppBaseController
         $approvalStatus = $request->approvalStatus;
         $timesheetId = $request->timesheetId;
 
-        $user = User::where('id', '=', $userId)->select('id')->first();
+        $user = User::where('id', '=', $userId)->first();
         $approval = User::where('id', '=', $approvalId)->select('id','role')->first();
 
         if($approval==null)
@@ -112,6 +112,7 @@ class TimesheetApprovalController extends AppBaseController
                 ->orWhere('approval_histories.group_approval_id', '=', $approval['role']);
         })->
         where('selected', '=', '1')->
+        orderBy('timesheet_details.date','asc')->
         get();
 
         $timesheet_insentif = TimesheetInsentif::
@@ -126,6 +127,7 @@ class TimesheetApprovalController extends AppBaseController
             $query->where('approval_histories.approval_id', '=', $approval['id'])
                 ->orWhere('approval_histories.group_approval_id', '=', $approval['role']);
         })->
+        orderBy('timesheet_insentif.date','asc')->
         get();
 
         $timesheet_transport = TimesheetTransport::
@@ -140,6 +142,7 @@ class TimesheetApprovalController extends AppBaseController
             $query->where('approval_histories.approval_id', '=', $approval['id'])
                 ->orWhere('approval_histories.group_approval_id', '=', $approval['role']);
         })->
+        orderBy('timesheet_transport.date','asc')->
         get();
 
         $summary = $this->populateSummary($timesheetId, $user, $approval, $approvalStatus, $timesheet_insentif, $timesheet_transport);
@@ -224,7 +227,7 @@ class TimesheetApprovalController extends AppBaseController
                     }
                 }
 
-            } else if ($m->lokasi === "DOMESTIK L. JAWA") {
+            } else if ($m->lokasi === "LUARJAWA") {
                 $summary['luar_jawa']['count'] = $m->total;
                 if (!empty ($arr)) {
                     foreach ($arr['luar_jawa'] as $key => $value) {
@@ -232,7 +235,7 @@ class TimesheetApprovalController extends AppBaseController
                         //  echo $key. ' = '.$value. ' * '.$m->total.' '.$value*$m->total.'<br>';
                     }
                 }
-            } else if ($m->lokasi === "DOMESTIK P. JAWA") {
+            } else if ($m->lokasi === "JAWA") {
                 $summary['non_lokal']['count'] = $m->total;
                 if (!empty ($arr)) {
                     foreach ($arr['non_lokal'] as $key => $value) {

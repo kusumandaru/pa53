@@ -99,7 +99,8 @@ class User extends Model
         'bank' => '',
         'cabang' => '',
         'name' => '',
-        'role' => ''
+        'role' => '',
+        'pjsvp' => ''
     ];
     public $table = 'users';
     public $fillable = [
@@ -114,7 +115,8 @@ class User extends Model
         'role',
         'position',
         'department',
-        'image'
+        'image',
+        'pjsvp'
     ];
     protected $dates = ['deleted_at'];
     /**
@@ -135,7 +137,8 @@ class User extends Model
         'position' => 'integer',
         'department' => 'integer',
         'remember_token' => 'string',
-        'image' => 'string'
+        'image' => 'string',
+        'pjsvp' => 'integer'
     ];
 
     public function roles()

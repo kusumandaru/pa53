@@ -7,10 +7,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/Models/Leave.php" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dd7a13a-f1b8-452f-940f-5fa9045cf6b8" name="Default" comment="add audit and separate leave from admin and non admin user">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Timesheet.php" afterPath="$PROJECT_DIR$/app/Models/Timesheet.php" />
-    </list>
+    <list default="true" id="3dd7a13a-f1b8-452f-940f-5fa9045cf6b8" name="Default" comment="add audit and separate leave from admin and non admin user" />
     <ignored path="pa53.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -657,7 +654,7 @@
       <workItem from="1500480151855" duration="1640000" />
       <workItem from="1500510299260" duration="353000" />
       <workItem from="1500799679868" duration="2878000" />
-      <workItem from="1500815172290" duration="381000" />
+      <workItem from="1500815172290" duration="421000" />
     </task>
     <task id="LOCAL-00001" summary="rename to PA Metrasys">
       <created>1476512413193</created>
@@ -831,7 +828,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="451272000" />
+    <option name="totallyTimeSpent" value="451312000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

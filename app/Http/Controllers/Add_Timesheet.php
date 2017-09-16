@@ -87,7 +87,7 @@ class Add_Timesheet extends Controller
         $alert = DB::select(DB::raw("SELECT approval_note FROM approval_histories,timesheets,timesheet_details where timesheet_details.timesheet_id = timesheets.id and (approval_histories.approval_status=2 or approval_histories.approval_status=5) and approval_histories.transaction_id = timesheet_details.id and timesheets.id = ".$id." group by approval_histories.date"));
         $lokasi = ['' => ''] + Constant::where('category', 'Location')->orderBy('name', 'asc')->pluck('name', 'value')->all();
         $activity = ['' => ''] + Constant::where('category', 'Activity')->orderBy('name', 'asc')->pluck('name', 'value')->all();
-               $project = ProjectMember::join('projects','project_members.project_id','projects.id')
+        $project = ProjectMember::join('projects','project_members.project_id','projects.id')
        ->where('user_id','=',Auth::user()->id)
        ->whereRaw('projects.deleted_at is null')
        ->pluck('projects.project_name', 'project_id')->all();
@@ -95,7 +95,7 @@ class Add_Timesheet extends Controller
         $timesheet_details = TimesheetDetail::where('timesheet_id', '=', $id)->get();
         $timesheet_insentif = TimesheetInsentif::where('timesheet_id', '=', $id)->get();
         $sum_timesheet_insentif = 0;
-        foreach ($timesheet_insentif as $g) {
+        foreach ($timesheet_insentif as $g) { 
             $sum_timesheet_insentif += $g->value;
         }
         //echo $sum;

@@ -1,6 +1,6 @@
-# Allowance and activity Management Based On Laravel Framework
+# Allowance and attendance Management Based On Laravel Framework
 
-
+<img src="https://ci.appveyor.com/api/projects/status/github/kusumandaru/pa53?branch=master&svg=true">
 
 ## License
 

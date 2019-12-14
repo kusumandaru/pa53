@@ -17,7 +17,10 @@ class CreateTunjanganRolesTable extends Migration
             $table->increments('id');
             $table->integer('tunjangan_id');
             $table->integer('role_id');
-            $table->double('value');
+            $table->double('lokal');
+            $table->double('non_lokal');
+            $table->double('luar_jawa');
+            $table->double('internasional');
             $table->timestamps();
             $table->softDeletes();
         });

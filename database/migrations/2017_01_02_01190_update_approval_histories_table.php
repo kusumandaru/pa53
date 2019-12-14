@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class UpdateApprovalHistoriesTable extends Migration
+class UpdateApprovalHistoriesTable3 extends Migration
 {
 
     /**

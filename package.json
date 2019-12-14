@@ -14,5 +14,24 @@
     "lodash": "^4.14.0",
     "vue": "^1.0.26",
     "vue-resource": "^0.9.3"
-  }
+  },
+  "name": "pa53",
+  "description": "<img src=\"https://ci.appveyor.com/api/projects/status/github/kusumandaru/pa53?branch=master&svg=true\">",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kusumandaru/pa53.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kusumandaru/pa53/issues"
+  },
+  "homepage": "https://github.com/kusumandaru/pa53#readme",
+  "dependencies": {}
 }

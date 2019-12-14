@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTunjanganRolesTable2 extends Migration
+class CreateTunjanganRoles2Table extends Migration
 {
 
     /**
@@ -13,8 +13,8 @@ class CreateTunjanganRolesTable2 extends Migration
      */
     public function up()
     {
-		Schema::dropIfExists('tunjangan_roles');
-        Schema::create('tunjangan_roles', function (Blueprint $table) {
+		  Schema::dropIfExists('tunjangan_roles_2');
+        Schema::create('tunjangan_roles_2', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tunjangan_id');
             $table->integer('role_id');
@@ -34,6 +34,6 @@ class CreateTunjanganRolesTable2 extends Migration
      */
     public function down()
     {
-        Schema::drop('tunjangan_roles');
+        Schema::drop('tunjangan_roles_2');
     }
 }

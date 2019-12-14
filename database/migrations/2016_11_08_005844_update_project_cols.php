@@ -15,7 +15,8 @@ class UpdateProjectCols extends Migration
     {
         Schema::table('projects', function ($table) {
             $table->dropColumn('iwo');
-            $table->integer('budget');
+            $table->decimal('budget', 15, 2);
+            $table->integer('effort_type');
         });
     }
 

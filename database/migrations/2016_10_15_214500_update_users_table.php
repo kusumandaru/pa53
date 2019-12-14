@@ -14,9 +14,9 @@ class UpdateUsersTable extends Migration
     public function up()
     {
 
-        Schema::table('users', function ($table) {
+        /* Schema::table('users', function ($table) {
             $table->string('image');
-        });
+        }); */
     }
 
 }

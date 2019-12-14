@@ -14,11 +14,11 @@ class UpdateApprovalHistoriesTable extends Migration
     public function up()
     {
         Schema::table('approval_histories', function ($table) {
-            $table->string('transaction_type');
-            $table->integer('user_id');
-            $table->integer('approval_id');
-            $table->integer('approval_status')->default(0);
-            $table->renameColumn('timesheet_id', 'transaction_id');
+            // $table->integer('transaction_type');
+            // $table->integer('user_id');
+            // $table->integer('approval_id');
+            // $table->integer('approval_status')->default(0);
+            // $table->renameColumn('timesheet_id', 'transaction_id');
         });
     }
 

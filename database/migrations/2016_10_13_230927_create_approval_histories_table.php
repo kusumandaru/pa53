@@ -19,6 +19,11 @@ class CreateApprovalHistoriesTable extends Migration
             $table->string('note');
             $table->integer('sequence_id');
             $table->integer('timesheet_id');
+            $table->integer('transaction_type');
+            $table->integer('user_id');
+            $table->integer('approval_id');
+            $table->integer('approval_status')->default(0);
+            $table->integer('transaction_id');
             $table->timestamps();
             $table->softDeletes();
         });

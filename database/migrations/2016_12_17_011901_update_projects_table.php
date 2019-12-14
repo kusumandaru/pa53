@@ -14,11 +14,11 @@ class UpdateProjectsTable extends Migration
     public function up()
     {
         Schema::table('projects', function ($table) {
-            $table->dropColumn('budget');
+            // $table->dropColumn('budget');
         });
         Schema::table('projects', function ($table) {
-            $table->decimal('budget', 15, 2);
-            $table->integer('effort_type');
+            // $table->decimal('budget', 15, 2);
+            // $table->integer('effort_type');
         });
     }
 

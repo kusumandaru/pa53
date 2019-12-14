@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class UpdateApprovalHistoriesTable extends Migration
+class UpdateApprovalHistoriesTable1 extends Migration
 {
 
     /**
@@ -14,10 +14,10 @@ class UpdateApprovalHistoriesTable extends Migration
     public function up()
     {
         Schema::table('approval_histories', function ($table) {
-            $table->dropColumn('transaction_type');
+            // $table->dropColumn('transaction_type');
         });
         Schema::table('approval_histories', function ($table) {
-            $table->integer('transaction_type');
+            // $table->integer('transaction_type');
         });
     }
 
